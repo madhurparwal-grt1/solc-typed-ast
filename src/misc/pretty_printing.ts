@@ -123,7 +123,7 @@ export function fmt(message: string, ...details: PPIsh[]): string {
                 message += ".";
             }
 
-            message += "\n\n" + nodes.map((node) => node.print()).join("\n");
+            message += "\n\n" + nodes.map((node) => { throw new Error("STUB"); }).join("\n");
         }
     }
 

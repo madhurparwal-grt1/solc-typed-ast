@@ -9,15 +9,6 @@ export class ModernUserDefinedTypeNameProcessor extends ModernTypeNameProcessor<
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof UserDefinedTypeName> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const name: string = raw.name;
-        const referencedDeclaration: number = raw.referencedDeclaration;
-
-        const path = raw.pathNode
-            ? (reader.convert(raw.pathNode, config) as IdentifierPath)
-            : undefined;
-
-        return [id, src, typeString, typeIdentifier, name, referencedDeclaration, path, raw];
+        throw new Error("STUB");
     }
 }

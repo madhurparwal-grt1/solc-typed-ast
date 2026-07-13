@@ -28,31 +28,21 @@ export class UserDefinedTypeName extends TypeName {
         path?: IdentifierPath,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.name = name;
-        this.referencedDeclaration = referencedDeclaration;
-        this.path = path;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.path);
+        throw new Error("STUB");
     }
 
     /**
      * Reference to the declaration
      */
     get vReferencedDeclaration(): ASTNode {
-        return this.requiredContext.locate(this.referencedDeclaration);
+        throw new Error("STUB");
     }
 
     set vReferencedDeclaration(value: ASTNode) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.referencedDeclaration = value.id;
+        throw new Error("STUB");
     }
 }

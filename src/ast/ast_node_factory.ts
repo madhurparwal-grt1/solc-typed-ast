@@ -81,603 +81,254 @@ type Specific<Args extends any[]> = Args["length"] extends 0
 export type IDMap = Map<number, number>;
 
 const argExtractionMapping = new Map<ASTNodeConstructor<ASTNode>, (node: any) => any[]>([
-    [ASTNode, (node: ASTNode): Specific<ConstructorParameters<typeof ASTNode>> => [node.raw]],
+    [ASTNode, (node: ASTNode): Specific<ConstructorParameters<typeof ASTNode>> => { throw new Error("STUB"); }],
     [
         ContractDefinition,
-        (node: ContractDefinition): Specific<ConstructorParameters<typeof ContractDefinition>> => [
-            node.name,
-            node.scope,
-            node.kind,
-            node.abstract,
-            node.fullyImplemented,
-            node.linearizedBaseContracts,
-            node.usedErrors,
-            node.usedEvents,
-            node.documentation,
-            node.children,
-            node.nameLocation,
-            node.baseSlotExpression,
-            node.raw
-        ]
+        (node: ContractDefinition): Specific<ConstructorParameters<typeof ContractDefinition>> => { throw new Error("STUB"); }
     ],
     [
         EnumDefinition,
-        (node: EnumDefinition): Specific<ConstructorParameters<typeof EnumDefinition>> => [
-            node.name,
-            node.vMembers,
-            node.documentation,
-            node.nameLocation,
-            node.raw
-        ]
+        (node: EnumDefinition): Specific<ConstructorParameters<typeof EnumDefinition>> => { throw new Error("STUB"); }
     ],
     [
         EnumValue,
-        (node: EnumValue): Specific<ConstructorParameters<typeof EnumValue>> => [
-            node.name,
-            node.nameLocation,
-            node.raw
-        ]
+        (node: EnumValue): Specific<ConstructorParameters<typeof EnumValue>> => { throw new Error("STUB"); }
     ],
     [
         ErrorDefinition,
-        (node: ErrorDefinition): Specific<ConstructorParameters<typeof ErrorDefinition>> => [
-            node.name,
-            node.vParameters,
-            node.documentation,
-            node.nameLocation,
-            node.raw
-        ]
+        (node: ErrorDefinition): Specific<ConstructorParameters<typeof ErrorDefinition>> => { throw new Error("STUB"); }
     ],
     [
         EventDefinition,
-        (node: EventDefinition): Specific<ConstructorParameters<typeof EventDefinition>> => [
-            node.anonymous,
-            node.name,
-            node.vParameters,
-            node.documentation,
-            node.nameLocation,
-            node.raw
-        ]
+        (node: EventDefinition): Specific<ConstructorParameters<typeof EventDefinition>> => { throw new Error("STUB"); }
     ],
     [
         FunctionDefinition,
-        (node: FunctionDefinition): Specific<ConstructorParameters<typeof FunctionDefinition>> => [
-            node.scope,
-            node.kind,
-            node.name,
-            node.virtual,
-            node.visibility,
-            node.stateMutability,
-            node.isConstructor,
-            node.vParameters,
-            node.vReturnParameters,
-            node.vModifiers,
-            node.vOverrideSpecifier,
-            node.vBody,
-            node.documentation,
-            node.nameLocation,
-            node.raw
-        ]
+        (node: FunctionDefinition): Specific<ConstructorParameters<typeof FunctionDefinition>> => { throw new Error("STUB"); }
     ],
     [
         ModifierDefinition,
-        (node: ModifierDefinition): Specific<ConstructorParameters<typeof ModifierDefinition>> => [
-            node.name,
-            node.virtual,
-            node.visibility,
-            node.vParameters,
-            node.vOverrideSpecifier,
-            node.vBody,
-            node.documentation,
-            node.nameLocation,
-            node.raw
-        ]
+        (node: ModifierDefinition): Specific<ConstructorParameters<typeof ModifierDefinition>> => { throw new Error("STUB"); }
     ],
     [
         StructDefinition,
-        (node: StructDefinition): Specific<ConstructorParameters<typeof StructDefinition>> => [
-            node.name,
-            node.scope,
-            node.visibility,
-            node.vMembers,
-            node.documentation,
-            node.nameLocation,
-            node.raw
-        ]
+        (node: StructDefinition): Specific<ConstructorParameters<typeof StructDefinition>> => { throw new Error("STUB"); }
     ],
     [
         UserDefinedValueTypeDefinition,
         (
             node: UserDefinedValueTypeDefinition
-        ): Specific<ConstructorParameters<typeof UserDefinedValueTypeDefinition>> => [
-            node.name,
-            node.underlyingType,
-            node.nameLocation,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof UserDefinedValueTypeDefinition>> => { throw new Error("STUB"); }
     ],
     [
         VariableDeclaration,
         (
             node: VariableDeclaration
-        ): Specific<ConstructorParameters<typeof VariableDeclaration>> => [
-            node.constant,
-            node.indexed,
-            node.name,
-            node.scope,
-            node.stateVariable,
-            node.storageLocation,
-            node.visibility,
-            node.mutability,
-            node.typeString,
-            node.typeIdentifier,
-            node.documentation,
-            node.vType,
-            node.vOverrideSpecifier,
-            node.vValue,
-            node.nameLocation,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof VariableDeclaration>> => { throw new Error("STUB"); }
     ],
     [
         Assignment,
-        (node: Assignment): Specific<ConstructorParameters<typeof Assignment>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.operator,
-            node.vLeftHandSide,
-            node.vRightHandSide,
-            node.raw
-        ]
+        (node: Assignment): Specific<ConstructorParameters<typeof Assignment>> => { throw new Error("STUB"); }
     ],
     [
         BinaryOperation,
-        (node: BinaryOperation): Specific<ConstructorParameters<typeof BinaryOperation>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.operator,
-            node.vLeftExpression,
-            node.vRightExpression,
-            node.userFunction,
-            node.raw
-        ]
+        (node: BinaryOperation): Specific<ConstructorParameters<typeof BinaryOperation>> => { throw new Error("STUB"); }
     ],
     [
         Conditional,
-        (node: Conditional): Specific<ConstructorParameters<typeof Conditional>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vCondition,
-            node.vTrueExpression,
-            node.vFalseExpression,
-            node.raw
-        ]
+        (node: Conditional): Specific<ConstructorParameters<typeof Conditional>> => { throw new Error("STUB"); }
     ],
     [
         ElementaryTypeNameExpression,
         (
             node: ElementaryTypeNameExpression
-        ): Specific<ConstructorParameters<typeof ElementaryTypeNameExpression>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.typeName,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof ElementaryTypeNameExpression>> => { throw new Error("STUB"); }
     ],
     [
         FunctionCallOptions,
         (
             node: FunctionCallOptions
-        ): Specific<ConstructorParameters<typeof FunctionCallOptions>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vExpression,
-            node.vOptionsMap,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof FunctionCallOptions>> => { throw new Error("STUB"); }
     ],
     [
         FunctionCall,
-        (node: FunctionCall): Specific<ConstructorParameters<typeof FunctionCall>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.kind,
-            node.vExpression,
-            node.vArguments,
-            node.fieldNames,
-            node.raw
-        ]
+        (node: FunctionCall): Specific<ConstructorParameters<typeof FunctionCall>> => { throw new Error("STUB"); }
     ],
     [
         Identifier,
-        (node: Identifier): Specific<ConstructorParameters<typeof Identifier>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.name,
-            node.referencedDeclaration,
-            node.raw
-        ]
+        (node: Identifier): Specific<ConstructorParameters<typeof Identifier>> => { throw new Error("STUB"); }
     ],
     [
         IdentifierPath,
-        (node: IdentifierPath): Specific<ConstructorParameters<typeof IdentifierPath>> => [
-            node.name,
-            node.referencedDeclaration,
-            node.raw
-        ]
+        (node: IdentifierPath): Specific<ConstructorParameters<typeof IdentifierPath>> => { throw new Error("STUB"); }
     ],
     [
         IndexAccess,
-        (node: IndexAccess): Specific<ConstructorParameters<typeof IndexAccess>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vBaseExpression,
-            node.vIndexExpression,
-            node.raw
-        ]
+        (node: IndexAccess): Specific<ConstructorParameters<typeof IndexAccess>> => { throw new Error("STUB"); }
     ],
     [
         IndexRangeAccess,
-        (node: IndexRangeAccess): Specific<ConstructorParameters<typeof IndexRangeAccess>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vBaseExpression,
-            node.vStartExpression,
-            node.vEndExpression,
-            node.raw
-        ]
+        (node: IndexRangeAccess): Specific<ConstructorParameters<typeof IndexRangeAccess>> => { throw new Error("STUB"); }
     ],
     [
         Literal,
-        (node: Literal): Specific<ConstructorParameters<typeof Literal>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.kind,
-            node.hexValue,
-            node.value,
-            node.subdenomination,
-            node.raw
-        ]
+        (node: Literal): Specific<ConstructorParameters<typeof Literal>> => { throw new Error("STUB"); }
     ],
     [
         MemberAccess,
-        (node: MemberAccess): Specific<ConstructorParameters<typeof MemberAccess>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vExpression,
-            node.memberName,
-            node.referencedDeclaration,
-            node.raw
-        ]
+        (node: MemberAccess): Specific<ConstructorParameters<typeof MemberAccess>> => { throw new Error("STUB"); }
     ],
     [
         NewExpression,
-        (node: NewExpression): Specific<ConstructorParameters<typeof NewExpression>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vTypeName,
-            node.raw
-        ]
+        (node: NewExpression): Specific<ConstructorParameters<typeof NewExpression>> => { throw new Error("STUB"); }
     ],
     [
         TupleExpression,
-        (node: TupleExpression): Specific<ConstructorParameters<typeof TupleExpression>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.isInlineArray,
-            node.vOriginalComponents,
-            node.raw
-        ]
+        (node: TupleExpression): Specific<ConstructorParameters<typeof TupleExpression>> => { throw new Error("STUB"); }
     ],
     [
         UnaryOperation,
-        (node: UnaryOperation): Specific<ConstructorParameters<typeof UnaryOperation>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.prefix,
-            node.operator,
-            node.vSubExpression,
-            node.userFunction,
-            node.raw
-        ]
+        (node: UnaryOperation): Specific<ConstructorParameters<typeof UnaryOperation>> => { throw new Error("STUB"); }
     ],
     [
         ImportDirective,
-        (node: ImportDirective): Specific<ConstructorParameters<typeof ImportDirective>> => [
-            node.file,
-            node.absolutePath,
-            node.unitAlias,
-            node.symbolAliases,
-            node.scope,
-            node.sourceUnit,
-            node.raw
-        ]
+        (node: ImportDirective): Specific<ConstructorParameters<typeof ImportDirective>> => { throw new Error("STUB"); }
     ],
     [
         InheritanceSpecifier,
         (
             node: InheritanceSpecifier
-        ): Specific<ConstructorParameters<typeof InheritanceSpecifier>> => [
-            node.vBaseType,
-            node.vArguments,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof InheritanceSpecifier>> => { throw new Error("STUB"); }
     ],
     [
         ModifierInvocation,
-        (node: ModifierInvocation): Specific<ConstructorParameters<typeof ModifierInvocation>> => [
-            node.vModifierName,
-            node.vArguments,
-            node.kind,
-            node.raw
-        ]
+        (node: ModifierInvocation): Specific<ConstructorParameters<typeof ModifierInvocation>> => { throw new Error("STUB"); }
     ],
     [
         OverrideSpecifier,
-        (node: OverrideSpecifier): Specific<ConstructorParameters<typeof OverrideSpecifier>> => [
-            node.vOverrides,
-            node.raw
-        ]
+        (node: OverrideSpecifier): Specific<ConstructorParameters<typeof OverrideSpecifier>> => { throw new Error("STUB"); }
     ],
     [
         ParameterList,
-        (node: ParameterList): Specific<ConstructorParameters<typeof ParameterList>> => [
-            node.vParameters,
-            node.raw
-        ]
+        (node: ParameterList): Specific<ConstructorParameters<typeof ParameterList>> => { throw new Error("STUB"); }
     ],
     [
         PragmaDirective,
-        (node: PragmaDirective): Specific<ConstructorParameters<typeof PragmaDirective>> => [
-            node.literals,
-            node.raw
-        ]
+        (node: PragmaDirective): Specific<ConstructorParameters<typeof PragmaDirective>> => { throw new Error("STUB"); }
     ],
     [
         SourceUnit,
-        (node: SourceUnit): Specific<ConstructorParameters<typeof SourceUnit>> => [
-            node.sourceEntryKey,
-            node.sourceListIndex,
-            node.absolutePath,
-            node.exportedSymbols,
-            node.children,
-            node.license,
-            node.raw
-        ]
+        (node: SourceUnit): Specific<ConstructorParameters<typeof SourceUnit>> => { throw new Error("STUB"); }
     ],
     [
         StructuredDocumentation,
         (
             node: StructuredDocumentation
-        ): Specific<ConstructorParameters<typeof StructuredDocumentation>> => [node.text, node.raw]
+        ): Specific<ConstructorParameters<typeof StructuredDocumentation>> => { throw new Error("STUB"); }
     ],
     [
         UsingForDirective,
-        (node: UsingForDirective): Specific<ConstructorParameters<typeof UsingForDirective>> => [
-            node.isGlobal,
-            node.vLibraryName,
-            node.vFunctionList,
-            node.vTypeName,
-            node.raw
-        ]
+        (node: UsingForDirective): Specific<ConstructorParameters<typeof UsingForDirective>> => { throw new Error("STUB"); }
     ],
     [
         Block,
-        (node: Block): Specific<ConstructorParameters<typeof Block>> => [
-            node.vStatements,
-            node.documentation,
-            node.raw
-        ]
+        (node: Block): Specific<ConstructorParameters<typeof Block>> => { throw new Error("STUB"); }
     ],
     [
         UncheckedBlock,
-        (node: UncheckedBlock): Specific<ConstructorParameters<typeof UncheckedBlock>> => [
-            node.vStatements,
-            node.documentation,
-            node.raw
-        ]
+        (node: UncheckedBlock): Specific<ConstructorParameters<typeof UncheckedBlock>> => { throw new Error("STUB"); }
     ],
     [
         Break,
-        (node: Break): Specific<ConstructorParameters<typeof Break>> => [
-            node.documentation,
-            node.raw
-        ]
+        (node: Break): Specific<ConstructorParameters<typeof Break>> => { throw new Error("STUB"); }
     ],
     [
         Continue,
-        (node: Continue): Specific<ConstructorParameters<typeof Continue>> => [
-            node.documentation,
-            node.raw
-        ]
+        (node: Continue): Specific<ConstructorParameters<typeof Continue>> => { throw new Error("STUB"); }
     ],
     [
         DoWhileStatement,
-        (node: DoWhileStatement): Specific<ConstructorParameters<typeof DoWhileStatement>> => [
-            node.vCondition,
-            node.vBody,
-            node.documentation,
-            node.raw
-        ]
+        (node: DoWhileStatement): Specific<ConstructorParameters<typeof DoWhileStatement>> => { throw new Error("STUB"); }
     ],
     [
         EmitStatement,
-        (node: EmitStatement): Specific<ConstructorParameters<typeof EmitStatement>> => [
-            node.vEventCall,
-            node.documentation,
-            node.raw
-        ]
+        (node: EmitStatement): Specific<ConstructorParameters<typeof EmitStatement>> => { throw new Error("STUB"); }
     ],
     [
         ExpressionStatement,
         (
             node: ExpressionStatement
-        ): Specific<ConstructorParameters<typeof ExpressionStatement>> => [
-            node.vExpression,
-            node.documentation,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof ExpressionStatement>> => { throw new Error("STUB"); }
     ],
     [
         ForStatement,
-        (node: ForStatement): Specific<ConstructorParameters<typeof ForStatement>> => [
-            node.vBody,
-            node.vInitializationExpression,
-            node.vCondition,
-            node.vLoopExpression,
-            node.documentation,
-            node.raw
-        ]
+        (node: ForStatement): Specific<ConstructorParameters<typeof ForStatement>> => { throw new Error("STUB"); }
     ],
     [
         IfStatement,
-        (node: IfStatement): Specific<ConstructorParameters<typeof IfStatement>> => [
-            node.vCondition,
-            node.vTrueBody,
-            node.vFalseBody,
-            node.documentation,
-            node.raw
-        ]
+        (node: IfStatement): Specific<ConstructorParameters<typeof IfStatement>> => { throw new Error("STUB"); }
     ],
     [
         InlineAssembly,
-        (node: InlineAssembly): Specific<ConstructorParameters<typeof InlineAssembly>> => [
-            node.externalReferences,
-            node.operations,
-            node.yul,
-            node.flags,
-            node.evmVersion,
-            node.documentation,
-            node.raw
-        ]
+        (node: InlineAssembly): Specific<ConstructorParameters<typeof InlineAssembly>> => { throw new Error("STUB"); }
     ],
     [
         PlaceholderStatement,
         (
             node: PlaceholderStatement
-        ): Specific<ConstructorParameters<typeof PlaceholderStatement>> => [
-            node.documentation,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof PlaceholderStatement>> => { throw new Error("STUB"); }
     ],
     [
         Return,
-        (node: Return): Specific<ConstructorParameters<typeof Return>> => [
-            node.functionReturnParameters,
-            node.vExpression,
-            node.documentation,
-            node.raw
-        ]
+        (node: Return): Specific<ConstructorParameters<typeof Return>> => { throw new Error("STUB"); }
     ],
     [
         RevertStatement,
-        (node: RevertStatement): Specific<ConstructorParameters<typeof RevertStatement>> => [
-            node.errorCall,
-            node.documentation,
-            node.raw
-        ]
+        (node: RevertStatement): Specific<ConstructorParameters<typeof RevertStatement>> => { throw new Error("STUB"); }
     ],
     [
         Throw,
-        (node: Throw): Specific<ConstructorParameters<typeof Throw>> => [
-            node.documentation,
-            node.raw
-        ]
+        (node: Throw): Specific<ConstructorParameters<typeof Throw>> => { throw new Error("STUB"); }
     ],
     [
         TryCatchClause,
-        (node: TryCatchClause): Specific<ConstructorParameters<typeof TryCatchClause>> => [
-            node.errorName,
-            node.vBlock,
-            node.vParameters,
-            node.documentation,
-            node.raw
-        ]
+        (node: TryCatchClause): Specific<ConstructorParameters<typeof TryCatchClause>> => { throw new Error("STUB"); }
     ],
     [
         TryStatement,
-        (node: TryStatement): Specific<ConstructorParameters<typeof TryStatement>> => [
-            node.vExternalCall,
-            node.vClauses,
-            node.documentation,
-            node.raw
-        ]
+        (node: TryStatement): Specific<ConstructorParameters<typeof TryStatement>> => { throw new Error("STUB"); }
     ],
     [
         VariableDeclarationStatement,
         (
             node: VariableDeclarationStatement
-        ): Specific<ConstructorParameters<typeof VariableDeclarationStatement>> => [
-            node.assignments,
-            node.vDeclarations,
-            node.vInitialValue,
-            node.documentation,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof VariableDeclarationStatement>> => { throw new Error("STUB"); }
     ],
     [
         WhileStatement,
-        (node: WhileStatement): Specific<ConstructorParameters<typeof WhileStatement>> => [
-            node.vCondition,
-            node.vBody,
-            node.documentation,
-            node.raw
-        ]
+        (node: WhileStatement): Specific<ConstructorParameters<typeof WhileStatement>> => { throw new Error("STUB"); }
     ],
     [
         ArrayTypeName,
-        (node: ArrayTypeName): Specific<ConstructorParameters<typeof ArrayTypeName>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vBaseType,
-            node.vLength,
-            node.raw
-        ]
+        (node: ArrayTypeName): Specific<ConstructorParameters<typeof ArrayTypeName>> => { throw new Error("STUB"); }
     ],
     [
         ElementaryTypeName,
-        (node: ElementaryTypeName): Specific<ConstructorParameters<typeof ElementaryTypeName>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.name,
-            node.stateMutability,
-            node.raw
-        ]
+        (node: ElementaryTypeName): Specific<ConstructorParameters<typeof ElementaryTypeName>> => { throw new Error("STUB"); }
     ],
     [
         FunctionTypeName,
-        (node: FunctionTypeName): Specific<ConstructorParameters<typeof FunctionTypeName>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.visibility,
-            node.stateMutability,
-            node.vParameterTypes,
-            node.vReturnParameterTypes,
-            node.raw
-        ]
+        (node: FunctionTypeName): Specific<ConstructorParameters<typeof FunctionTypeName>> => { throw new Error("STUB"); }
     ],
     [
         Mapping,
-        (node: Mapping): Specific<ConstructorParameters<typeof Mapping>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.vKeyType,
-            node.vValueType,
-            node.raw
-        ]
+        (node: Mapping): Specific<ConstructorParameters<typeof Mapping>> => { throw new Error("STUB"); }
     ],
     [
         UserDefinedTypeName,
         (
             node: UserDefinedTypeName
-        ): Specific<ConstructorParameters<typeof UserDefinedTypeName>> => [
-            node.typeString,
-            node.typeIdentifier,
-            node.name,
-            node.referencedDeclaration,
-            node.path,
-            node.raw
-        ]
+        ): Specific<ConstructorParameters<typeof UserDefinedTypeName>> => { throw new Error("STUB"); }
     ]
 ]);
 
@@ -697,313 +348,313 @@ export class ASTNodeFactory {
     makeContractDefinition(
         ...args: Specific<ConstructorParameters<typeof ContractDefinition>>
     ): ContractDefinition {
-        return this.make(ContractDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeEnumDefinition(
         ...args: Specific<ConstructorParameters<typeof EnumDefinition>>
     ): EnumDefinition {
-        return this.make(EnumDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeEnumValue(...args: Specific<ConstructorParameters<typeof EnumValue>>): EnumValue {
-        return this.make(EnumValue, ...args);
+        throw new Error("STUB");
     }
 
     makeErrorDefinition(
         ...args: Specific<ConstructorParameters<typeof ErrorDefinition>>
     ): ErrorDefinition {
-        return this.make(ErrorDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeEventDefinition(
         ...args: Specific<ConstructorParameters<typeof EventDefinition>>
     ): EventDefinition {
-        return this.make(EventDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeFunctionDefinition(
         ...args: Specific<ConstructorParameters<typeof FunctionDefinition>>
     ): FunctionDefinition {
-        return this.make(FunctionDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeModifierDefinition(
         ...args: Specific<ConstructorParameters<typeof ModifierDefinition>>
     ): ModifierDefinition {
-        return this.make(ModifierDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeStructDefinition(
         ...args: Specific<ConstructorParameters<typeof StructDefinition>>
     ): StructDefinition {
-        return this.make(StructDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeUserDefinedValueTypeDefinition(
         ...args: Specific<ConstructorParameters<typeof UserDefinedValueTypeDefinition>>
     ): UserDefinedValueTypeDefinition {
-        return this.make(UserDefinedValueTypeDefinition, ...args);
+        throw new Error("STUB");
     }
 
     makeVariableDeclaration(
         ...args: Specific<ConstructorParameters<typeof VariableDeclaration>>
     ): VariableDeclaration {
-        return this.make(VariableDeclaration, ...args);
+        throw new Error("STUB");
     }
 
     makeAssignment(...args: Specific<ConstructorParameters<typeof Assignment>>): Assignment {
-        return this.make(Assignment, ...args);
+        throw new Error("STUB");
     }
 
     makeBinaryOperation(
         ...args: Specific<ConstructorParameters<typeof BinaryOperation>>
     ): BinaryOperation {
-        return this.make(BinaryOperation, ...args);
+        throw new Error("STUB");
     }
 
     makeConditional(...args: Specific<ConstructorParameters<typeof Conditional>>): Conditional {
-        return this.make(Conditional, ...args);
+        throw new Error("STUB");
     }
 
     makeElementaryTypeNameExpression(
         ...args: Specific<ConstructorParameters<typeof ElementaryTypeNameExpression>>
     ): ElementaryTypeNameExpression {
-        return this.make(ElementaryTypeNameExpression, ...args);
+        throw new Error("STUB");
     }
 
     makeFunctionCallOptions(
         ...args: Specific<ConstructorParameters<typeof FunctionCallOptions>>
     ): FunctionCallOptions {
-        return this.make(FunctionCallOptions, ...args);
+        throw new Error("STUB");
     }
 
     makeFunctionCall(...args: Specific<ConstructorParameters<typeof FunctionCall>>): FunctionCall {
-        return this.make(FunctionCall, ...args);
+        throw new Error("STUB");
     }
 
     makeIdentifier(...args: Specific<ConstructorParameters<typeof Identifier>>): Identifier {
-        return this.make(Identifier, ...args);
+        throw new Error("STUB");
     }
 
     makeIdentifierPath(
         ...args: Specific<ConstructorParameters<typeof IdentifierPath>>
     ): IdentifierPath {
-        return this.make(IdentifierPath, ...args);
+        throw new Error("STUB");
     }
 
     makeIndexAccess(...args: Specific<ConstructorParameters<typeof IndexAccess>>): IndexAccess {
-        return this.make(IndexAccess, ...args);
+        throw new Error("STUB");
     }
 
     makeIndexRangeAccess(
         ...args: Specific<ConstructorParameters<typeof IndexRangeAccess>>
     ): IndexRangeAccess {
-        return this.make(IndexRangeAccess, ...args);
+        throw new Error("STUB");
     }
 
     makeLiteral(...args: Specific<ConstructorParameters<typeof Literal>>): Literal {
-        return this.make(Literal, ...args);
+        throw new Error("STUB");
     }
 
     makeMemberAccess(...args: Specific<ConstructorParameters<typeof MemberAccess>>): MemberAccess {
-        return this.make(MemberAccess, ...args);
+        throw new Error("STUB");
     }
 
     makeNewExpression(
         ...args: Specific<ConstructorParameters<typeof NewExpression>>
     ): NewExpression {
-        return this.make(NewExpression, ...args);
+        throw new Error("STUB");
     }
 
     makePrimaryExpression(
         ...args: Specific<ConstructorParameters<typeof PrimaryExpression>>
     ): PrimaryExpression {
-        return this.make(PrimaryExpression, ...args);
+        throw new Error("STUB");
     }
 
     makeTupleExpression(
         ...args: Specific<ConstructorParameters<typeof TupleExpression>>
     ): TupleExpression {
-        return this.make(TupleExpression, ...args);
+        throw new Error("STUB");
     }
 
     makeUnaryOperation(
         ...args: Specific<ConstructorParameters<typeof UnaryOperation>>
     ): UnaryOperation {
-        return this.make(UnaryOperation, ...args);
+        throw new Error("STUB");
     }
 
     makeImportDirective(
         ...args: Specific<ConstructorParameters<typeof ImportDirective>>
     ): ImportDirective {
-        return this.make(ImportDirective, ...args);
+        throw new Error("STUB");
     }
 
     makeInheritanceSpecifier(
         ...args: Specific<ConstructorParameters<typeof InheritanceSpecifier>>
     ): InheritanceSpecifier {
-        return this.make(InheritanceSpecifier, ...args);
+        throw new Error("STUB");
     }
 
     makeModifierInvocation(
         ...args: Specific<ConstructorParameters<typeof ModifierInvocation>>
     ): ModifierInvocation {
-        return this.make(ModifierInvocation, ...args);
+        throw new Error("STUB");
     }
 
     makeOverrideSpecifier(
         ...args: Specific<ConstructorParameters<typeof OverrideSpecifier>>
     ): OverrideSpecifier {
-        return this.make(OverrideSpecifier, ...args);
+        throw new Error("STUB");
     }
 
     makeParameterList(
         ...args: Specific<ConstructorParameters<typeof ParameterList>>
     ): ParameterList {
-        return this.make(ParameterList, ...args);
+        throw new Error("STUB");
     }
 
     makePragmaDirective(
         ...args: Specific<ConstructorParameters<typeof PragmaDirective>>
     ): PragmaDirective {
-        return this.make(PragmaDirective, ...args);
+        throw new Error("STUB");
     }
 
     makeSourceUnit(...args: Specific<ConstructorParameters<typeof SourceUnit>>): SourceUnit {
-        return this.make(SourceUnit, ...args);
+        throw new Error("STUB");
     }
 
     makeStructuredDocumentation(
         ...args: Specific<ConstructorParameters<typeof StructuredDocumentation>>
     ): StructuredDocumentation {
-        return this.make(StructuredDocumentation, ...args);
+        throw new Error("STUB");
     }
 
     makeUsingForDirective(
         ...args: Specific<ConstructorParameters<typeof UsingForDirective>>
     ): UsingForDirective {
-        return this.make(UsingForDirective, ...args);
+        throw new Error("STUB");
     }
 
     makeBlock(...args: Specific<ConstructorParameters<typeof Block>>): Block {
-        return this.make(Block, ...args);
+        throw new Error("STUB");
     }
 
     makeUncheckedBlock(
         ...args: Specific<ConstructorParameters<typeof UncheckedBlock>>
     ): UncheckedBlock {
-        return this.make(UncheckedBlock, ...args);
+        throw new Error("STUB");
     }
 
     makeBreak(...args: Specific<ConstructorParameters<typeof Break>>): Break {
-        return this.make(Break, ...args);
+        throw new Error("STUB");
     }
 
     makeContinue(...args: Specific<ConstructorParameters<typeof Continue>>): Continue {
-        return this.make(Continue, ...args);
+        throw new Error("STUB");
     }
 
     makeDoWhileStatement(
         ...args: Specific<ConstructorParameters<typeof DoWhileStatement>>
     ): DoWhileStatement {
-        return this.make(DoWhileStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeEmitStatement(
         ...args: Specific<ConstructorParameters<typeof EmitStatement>>
     ): EmitStatement {
-        return this.make(EmitStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeExpressionStatement(
         ...args: Specific<ConstructorParameters<typeof ExpressionStatement>>
     ): ExpressionStatement {
-        return this.make(ExpressionStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeForStatement(...args: Specific<ConstructorParameters<typeof ForStatement>>): ForStatement {
-        return this.make(ForStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeIfStatement(...args: Specific<ConstructorParameters<typeof IfStatement>>): IfStatement {
-        return this.make(IfStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeInlineAssembly(
         ...args: Specific<ConstructorParameters<typeof InlineAssembly>>
     ): InlineAssembly {
-        return this.make(InlineAssembly, ...args);
+        throw new Error("STUB");
     }
 
     makePlaceholderStatement(
         ...args: Specific<ConstructorParameters<typeof PlaceholderStatement>>
     ): PlaceholderStatement {
-        return this.make(PlaceholderStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeReturn(...args: Specific<ConstructorParameters<typeof Return>>): Return {
-        return this.make(Return, ...args);
+        throw new Error("STUB");
     }
 
     makeRevertStatement(
         ...args: Specific<ConstructorParameters<typeof RevertStatement>>
     ): RevertStatement {
-        return this.make(RevertStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeThrow(...args: Specific<ConstructorParameters<typeof Throw>>): Throw {
-        return this.make(Throw, ...args);
+        throw new Error("STUB");
     }
 
     makeTryCatchClause(
         ...args: Specific<ConstructorParameters<typeof TryCatchClause>>
     ): TryCatchClause {
-        return this.make(TryCatchClause, ...args);
+        throw new Error("STUB");
     }
 
     makeTryStatement(...args: Specific<ConstructorParameters<typeof TryStatement>>): TryStatement {
-        return this.make(TryStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeVariableDeclarationStatement(
         ...args: Specific<ConstructorParameters<typeof VariableDeclarationStatement>>
     ): VariableDeclarationStatement {
-        return this.make(VariableDeclarationStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeWhileStatement(
         ...args: Specific<ConstructorParameters<typeof WhileStatement>>
     ): WhileStatement {
-        return this.make(WhileStatement, ...args);
+        throw new Error("STUB");
     }
 
     makeArrayTypeName(
         ...args: Specific<ConstructorParameters<typeof ArrayTypeName>>
     ): ArrayTypeName {
-        return this.make(ArrayTypeName, ...args);
+        throw new Error("STUB");
     }
 
     makeElementaryTypeName(
         ...args: Specific<ConstructorParameters<typeof ElementaryTypeName>>
     ): ElementaryTypeName {
-        return this.make(ElementaryTypeName, ...args);
+        throw new Error("STUB");
     }
 
     makeFunctionTypeName(
         ...args: Specific<ConstructorParameters<typeof FunctionTypeName>>
     ): FunctionTypeName {
-        return this.make(FunctionTypeName, ...args);
+        throw new Error("STUB");
     }
 
     makeMapping(...args: Specific<ConstructorParameters<typeof Mapping>>): Mapping {
-        return this.make(Mapping, ...args);
+        throw new Error("STUB");
     }
 
     makeUserDefinedTypeName(
         ...args: Specific<ConstructorParameters<typeof UserDefinedTypeName>>
     ): UserDefinedTypeName {
-        return this.make(UserDefinedTypeName, ...args);
+        throw new Error("STUB");
     }
 
     makeIdentifierFor(
@@ -1018,92 +669,21 @@ export class ASTNodeFactory {
             | UserDefinedValueTypeDefinition
             | ImportDirective
     ): Identifier {
-        let typeString: string;
-        let typeIdentifier: string | undefined;
-
-        if (target instanceof VariableDeclaration) {
-            typeString = target.typeString;
-            typeIdentifier = target.typeIdentifier;
-        } else if (target instanceof FunctionDefinition) {
-            const args = target.vParameters.vParameters.map(this.typeExtractor);
-
-            const result = [`function (${args.join(",")})`];
-
-            if (target.stateMutability !== FunctionStateMutability.NonPayable) {
-                result.push(target.stateMutability);
-            }
-
-            if (target.visibility !== FunctionVisibility.Public) {
-                result.push(target.visibility);
-            }
-
-            if (target.vReturnParameters.vParameters.length) {
-                const rets = target.vReturnParameters.vParameters.map(this.typeExtractor);
-
-                result.push(`returns (${rets.join(",")})`);
-            }
-
-            typeString = result.join(" ");
-            typeIdentifier = undefined;
-        } else if (target instanceof ContractDefinition) {
-            typeString = `type(contract ${target.name})`;
-            typeIdentifier = `t_contract$_${target.name}_$${target.id}`;
-        } else if (target instanceof StructDefinition) {
-            typeString = `type(struct ${target.canonicalName} storage pointer)`;
-            typeIdentifier = `t_struct$_${target.name}_$${target.id}`;
-        } else if (target instanceof EnumDefinition) {
-            typeString = `type(enum ${target.canonicalName})`;
-            typeIdentifier = `t_enum$_${target.name}_$${target.id}`;
-        } else if (target instanceof UserDefinedValueTypeDefinition) {
-            typeString = `type(${target.canonicalName})`;
-            typeIdentifier = `t_userDefinedValueType$_${target.name}_$${target.id}`;
-        } else if (target instanceof EventDefinition || target instanceof ErrorDefinition) {
-            const args = target.vParameters.vParameters.map(this.typeExtractor);
-
-            typeString = `function (${args.join(",")})`;
-            typeIdentifier = undefined;
-        } else if (target instanceof ImportDirective) {
-            typeString = "<missing>";
-
-            if (target.unitAlias === "") {
-                throw new Error('Target ImportDirective required to have valid "unitAlias"');
-            }
-
-            typeIdentifier = undefined;
-        } else {
-            throw new Error(
-                "ASTNodeFactory.makeIdentifierFor(): Unable to compose typeString for supplied target"
-            );
-        }
-
-        return this.makeIdentifier(
-            typeString,
-            typeIdentifier,
-            target instanceof ImportDirective ? target.unitAlias : target.name,
-            target.id
-        );
+        throw new Error("STUB");
     }
 
     makeUnfinalized<T extends ASTNode>(
         type: ASTNodeConstructor<T>,
         ...args: Specific<ConstructorParameters<typeof type>>
     ): T {
-        const node = new type(++this.lastId, "0:0:0", ...args);
-
-        this.context.register(node);
-
-        return node;
+        throw new Error("STUB");
     }
 
     make<T extends ASTNode>(
         type: ASTNodeConstructor<T>,
         ...args: Specific<ConstructorParameters<typeof type>>
     ): T {
-        const node = this.makeUnfinalized(type, ...args);
-
-        this.postprocessor.processNode(node, this.context);
-
-        return node;
+        throw new Error("STUB");
     }
 
     /**
@@ -1113,7 +693,7 @@ export class ASTNodeFactory {
      * by `referencedDeclaration` fields).
      */
     copy<T extends ASTNode>(node: T, remappings?: IDMap): T {
-        return this.copyWithMapping(node, remappings)[0];
+        throw new Error("STUB");
     }
 
     /**
@@ -1125,91 +705,15 @@ export class ASTNodeFactory {
      * by `referencedDeclaration` fields).
      */
     copyWithMapping<T extends ASTNode>(node: T, remappings?: IDMap): [T, IDMap] {
-        const cache = new Map<number, number>(remappings ? remappings.entries() : []);
-        const clone = this.copyHelper(node, cache);
-        const context = this.context;
-        const postprocessor = this.postprocessor;
-
-        for (const child of clone.getChildren(true)) {
-            this.patchIds(child, cache);
-
-            postprocessor.processNode(child, context);
-        }
-
-        return [clone, cache];
+        throw new Error("STUB");
     }
 
     private patchIds(node: ASTNode, cache: IDMap): void {
-        const patch = (oldId: number): number => {
-            const newId = cache.get(oldId);
-
-            return newId === undefined ? oldId : newId;
-        };
-
-        if (
-            node instanceof ContractDefinition ||
-            node instanceof FunctionDefinition ||
-            node instanceof StructDefinition ||
-            node instanceof VariableDeclaration ||
-            node instanceof ImportDirective
-        ) {
-            node.scope = patch(node.scope);
-        }
-
-        if (node instanceof ContractDefinition) {
-            node.linearizedBaseContracts = node.linearizedBaseContracts.map(patch);
-            node.usedErrors = node.usedErrors.map(patch);
-        }
-
-        if (
-            node instanceof Identifier ||
-            node instanceof IdentifierPath ||
-            node instanceof MemberAccess ||
-            node instanceof UserDefinedTypeName
-        ) {
-            node.referencedDeclaration = patch(node.referencedDeclaration);
-        }
-
-        if (node instanceof ImportDirective) {
-            node.sourceUnit = patch(node.sourceUnit);
-        }
-
-        if (node instanceof SourceUnit) {
-            const m = new Map<string, number>();
-
-            for (const [k, v] of node.exportedSymbols) {
-                m.set(k, patch(v));
-            }
-
-            node.exportedSymbols = m;
-        }
-
-        if (
-            (node instanceof UnaryOperation || node instanceof BinaryOperation) &&
-            node.userFunction
-        ) {
-            node.userFunction = patch(node.userFunction);
-        }
-
-        if (node instanceof VariableDeclarationStatement) {
-            node.assignments = node.assignments.map((id) => (id === null ? id : patch(id)));
-        }
+        throw new Error("STUB");
     }
 
     private copyHelper<T extends ASTNode>(node: T, cache: IDMap): T {
-        const ctor = node.constructor as ASTNodeConstructor<T>;
-        const extractor = argExtractionMapping.get(ctor);
-
-        if (extractor === undefined) {
-            throw new Error(`Unable to find extractor for node constructor ${ctor.name}`);
-        }
-
-        const args = extractor(node).map((arg) => this.copyValue(arg, cache));
-        const clone = this.makeUnfinalized(ctor, ...args);
-
-        cache.set(node.id, clone.id);
-
-        return clone;
+        throw new Error("STUB");
     }
 
     /**
@@ -1217,69 +721,14 @@ export class ASTNodeFactory {
      * passed to `node`'s constructor to recreate `node`.
      */
     getNodeConstructorArgs<T extends ASTNode>(node: T): any[] {
-        const ctor = node.constructor as ASTNodeConstructor<T>;
-        const extractor = argExtractionMapping.get(ctor);
-
-        if (extractor === undefined) {
-            throw new Error(`Unable to find extractor for node constructor ${ctor.name}`);
-        }
-
-        return extractor(node);
+        throw new Error("STUB");
     }
 
     private copyValue(value: any, cache: IDMap): any {
-        if (value === null || value === undefined) {
-            return value;
-        }
-
-        if (["string", "number", "bigint", "boolean"].includes(typeof value)) {
-            return value;
-        }
-
-        if (value instanceof ASTContext) {
-            return value;
-        }
-
-        if (value instanceof ASTNode) {
-            return this.copyHelper(value, cache);
-        }
-
-        if (value instanceof Array) {
-            return value.map((v) =>
-                v instanceof ASTNode ? this.copyHelper(v, cache) : this.copyValue(v, cache)
-            );
-        }
-
-        if (value instanceof Map) {
-            const m = new Map();
-
-            for (const [k, v] of value) {
-                m.set(
-                    k instanceof ASTNode ? this.copyHelper(k, cache) : this.copyValue(k, cache),
-                    v instanceof ASTNode ? this.copyHelper(v, cache) : this.copyValue(v, cache)
-                );
-            }
-
-            return m;
-        }
-
-        if (typeof value === "object") {
-            const o: { [property: string]: any } = {};
-            const hasProperty = Object.hasOwnProperty;
-
-            for (const p in value) {
-                if (hasProperty.call(value, p)) {
-                    o[p] = this.copyValue(value[p], cache);
-                }
-            }
-
-            return o;
-        }
-
-        throw new Error(`Cannot copy value ${JSON.stringify(value)} of type ${typeof value}`);
+        throw new Error("STUB");
     }
 
     private typeExtractor(arg: VariableDeclaration): string {
-        return arg.typeString;
+        throw new Error("STUB");
     }
 }

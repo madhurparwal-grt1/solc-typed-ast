@@ -1,7 +1,7 @@
 import { TypeIdentifier } from "./type_identifier";
 
 export function ppTypeIdentifierList(ts: Array<TypeIdentifier | null>): string {
-    return `$_${ts.map((t) => (t === null ? "" : t.pp())).join("_$_")}_$`;
+    return `$_${ts.map((t) => { throw new Error("STUB"); }).join("_$_")}_$`;
 }
 
 export function bigintAbs(a: bigint): bigint {

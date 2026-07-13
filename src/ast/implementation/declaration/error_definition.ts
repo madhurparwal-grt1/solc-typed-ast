@@ -37,19 +37,11 @@ export class ErrorDefinition extends ASTNode {
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.name = name;
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
-
-        this.vParameters = parameters;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vParameters);
+        throw new Error("STUB");
     }
 
     /**
@@ -57,6 +49,6 @@ export class ErrorDefinition extends ASTNode {
      * Reference to a scoped `SourceUnit` if event is declared on file level.
      */
     get vScope(): ContractDefinition | SourceUnit {
-        return this.parent as ContractDefinition | SourceUnit;
+        throw new Error("STUB");
     }
 }

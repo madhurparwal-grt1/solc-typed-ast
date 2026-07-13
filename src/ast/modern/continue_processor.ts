@@ -8,10 +8,6 @@ export class ModernContinueProcessor extends ModernNodeProcessor<Continue> {
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Continue> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const documentation: string | undefined = raw.documentation;
-
-        return [id, src, documentation, raw];
+        throw new Error("STUB");
     }
 }

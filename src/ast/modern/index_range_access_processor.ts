@@ -9,27 +9,6 @@ export class ModernIndexRangeAccessProcessor extends ModernExpressionProcessor<I
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof IndexRangeAccess> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const baseExpression = reader.convert(raw.baseExpression, config) as Expression;
-
-        const startExpression = raw.startExpression
-            ? (reader.convert(raw.startExpression, config) as Expression)
-            : undefined;
-
-        const endExpression = raw.endExpression
-            ? (reader.convert(raw.endExpression, config) as Expression)
-            : undefined;
-
-        return [
-            id,
-            src,
-            typeString,
-            typeIdentifier,
-            baseExpression,
-            startExpression,
-            endExpression,
-            raw
-        ];
+        throw new Error("STUB");
     }
 }

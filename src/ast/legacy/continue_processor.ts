@@ -8,8 +8,6 @@ export class LegacyContinueProcessor extends LegacyNodeProcessor<Continue> {
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Continue> {
-        const [id, src] = super.process(reader, config, raw);
-
-        return [id, src, undefined, raw];
+        throw new Error("STUB");
     }
 }

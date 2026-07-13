@@ -14,35 +14,6 @@ export class ModernUsingForDirectiveProcessor extends ModernNodeProcessor<UsingF
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof UsingForDirective> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const libraryName = raw.libraryName
-            ? (reader.convert(raw.libraryName, config) as UserDefinedTypeName)
-            : undefined;
-
-        const functionList: Array<IdentifierPath | UsingCustomizedOperator> | undefined =
-            raw.functionList
-                ? raw.functionList.map((entry: any): IdentifierPath | UsingCustomizedOperator => {
-                      if (entry.definition) {
-                          return {
-                              definition: reader.convert(
-                                  entry.definition,
-                                  config
-                              ) as IdentifierPath,
-                              operator: entry.operator
-                          };
-                      }
-
-                      return reader.convert(entry.function, config) as IdentifierPath;
-                  })
-                : undefined;
-
-        const typeName = raw.typeName
-            ? (reader.convert(raw.typeName, config) as TypeName)
-            : undefined;
-
-        const isGlobal = raw.global === true;
-
-        return [id, src, isGlobal, libraryName, functionList, typeName, raw];
+        throw new Error("STUB");
     }
 }

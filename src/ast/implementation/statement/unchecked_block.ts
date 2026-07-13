@@ -16,19 +16,13 @@ export class UncheckedBlock extends StatementWithChildren<
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        for (const statement of statements) {
-            this.appendChild(statement);
-        }
+        throw new Error("STUB");
     }
 
     /**
      * An array of the member statements
      */
     get vStatements(): Array<Statement | StatementWithChildren<ASTNode>> {
-        return this.ownChildren.filter(
-            (node) => node instanceof Statement || node instanceof StatementWithChildren
-        );
+        throw new Error("STUB");
     }
 }

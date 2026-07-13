@@ -12,6 +12,6 @@ export class EventType extends FunctionLikeType {
     }
 
     pp(): string {
-        return `event ${this.name}(${this.parameters.map((t) => t.pp()).join(",")})`;
+        return `event ${this.name}(${this.parameters.map((t) => { throw new Error("STUB"); }).join(",")})`;
     }
 }

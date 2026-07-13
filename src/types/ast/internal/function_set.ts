@@ -21,7 +21,7 @@ export class FunctionLikeSetType<
 
     pp(): string {
         const setType = this.defs[0] instanceof EventType ? "event_set" : "function_set";
-        return `${setType} { ${this.defs.map((fun) => fun.pp()).join(", ")} }`;
+        return `${setType} { ${this.defs.map((fun) => { throw new Error("STUB"); }).join(", ")} }`;
     }
 
     getFields(): any[] {

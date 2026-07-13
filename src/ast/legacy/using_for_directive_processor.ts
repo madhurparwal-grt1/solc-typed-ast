@@ -10,20 +10,6 @@ export class LegacyUsingForDirectiveProcessor extends LegacyNodeProcessor<UsingF
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof UsingForDirective> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const [libraryName, typeName] = reader.convertArray(raw.children, config) as [
-            UserDefinedTypeName,
-            TypeName?
-        ];
-
-        /**
-         * The "global" and "functionList" are only appearing since Solidity 0.8.13.
-         * The legacy AST should not ever contain these properties.
-         */
-        const isGlobal = false;
-        const functionList = undefined;
-
-        return [id, src, isGlobal, libraryName, functionList, typeName, raw];
+        throw new Error("STUB");
     }
 }

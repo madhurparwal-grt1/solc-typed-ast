@@ -9,12 +9,6 @@ export class ModernRevertStatementProcessor extends ModernNodeProcessor<RevertSt
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof RevertStatement> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const documentation: string | undefined = raw.documentation;
-
-        const errorCall = reader.convert(raw.errorCall, config) as FunctionCall;
-
-        return [id, src, errorCall, documentation, raw];
+        throw new Error("STUB");
     }
 }

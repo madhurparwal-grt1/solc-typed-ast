@@ -35,23 +35,14 @@ export class EnumDefinition extends ASTNodeWithChildren<StructuredDocumentation 
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.name = name;
-
-        for (const member of members) {
-            this.appendChild(member);
-        }
-
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
+        throw new Error("STUB");
     }
 
     /**
      * Canonical name (or qualified name), e.g. `DefiningContract.SomeEnum`
      */
     get canonicalName(): string {
-        return getFQDefName(this);
+        throw new Error("STUB");
     }
 
     /**
@@ -61,11 +52,11 @@ export class EnumDefinition extends ASTNodeWithChildren<StructuredDocumentation 
      * - Is instance of `StructuredDocumentation` when specified and compiler version is `0.6.3` or newer.
      */
     get documentation(): string | StructuredDocumentation | undefined {
-        return getDocumentation(this);
+        throw new Error("STUB");
     }
 
     set documentation(value: string | StructuredDocumentation | undefined) {
-        setDocumentation(this, value);
+        throw new Error("STUB");
     }
 
     /**
@@ -77,28 +68,28 @@ export class EnumDefinition extends ASTNodeWithChildren<StructuredDocumentation 
      * - Is type of `string` for compatibility reasons.
      */
     get danglingDocumentation(): string | StructuredDocumentation | undefined {
-        return getDanglingDocumentation(this);
+        throw new Error("STUB");
     }
 
     set danglingDocumentation(value: string | StructuredDocumentation | undefined) {
-        setDanglingDocumentation(this, value);
+        throw new Error("STUB");
     }
 
     /**
      * Array of the enum values
      */
     get vMembers(): readonly EnumValue[] {
-        return this.ownChildren.filter((node): node is EnumValue => node instanceof EnumValue);
+        throw new Error("STUB");
     }
 
     /**
      * Reference to a scoped contract or source unit
      */
     get vScope(): ContractDefinition | SourceUnit {
-        return this.parent as ContractDefinition | SourceUnit;
+        throw new Error("STUB");
     }
 
     toUintTypeString(): string {
-        return enumToIntType(this).pp();
+        throw new Error("STUB");
     }
 }

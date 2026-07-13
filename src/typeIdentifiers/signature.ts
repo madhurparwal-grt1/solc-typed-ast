@@ -107,9 +107,9 @@ function toSignatureType(
         }
 
         const def = ctx.requireType(from.id, StructDefinition);
-        let fieldTs = def.vMembers.map((decl) => typeOf(decl));
+        let fieldTs = def.vMembers.map((decl) => { throw new Error("STUB"); });
         // Remove any mappings
-        fieldTs = fieldTs.filter((fieldT) => !(fieldT instanceof MappingTypeId));
+        fieldTs = fieldTs.filter((fieldT) => { throw new Error("STUB"); });
 
         // Convert the fields to ABI signature types and filter out any empty tuples.
         // Empty tuples can result if a field is a struct contains only mappings.
@@ -117,11 +117,11 @@ function toSignatureType(
         // Convert to Memory to avoid treating them as storage pointers.
         const abiFieldTs = fieldTs
             .map((fieldT) =>
-                toSignatureType(changeLocationTo(fieldT, DataLocation.Memory), ctx, isLibrary)
+                { throw new Error("STUB"); }
             )
             .filter(
                 (abiFieldT) =>
-                    !(abiFieldT instanceof TupleTypeId && abiFieldT.components.length === 0)
+                    { throw new Error("STUB"); }
             );
 
         return new TupleTypeId(abiFieldTs);
@@ -169,7 +169,7 @@ function abiTypeIdToCanonicalName(t: TypeIdentifier, ctx: ASTContext): string {
     }
 
     if (t instanceof TupleTypeId) {
-        return `(${t.components.map((compT) => abiTypeIdToCanonicalName(compT, ctx)).join(",")})`;
+        return `(${t.components.map((compT) => { throw new Error("STUB"); }).join(",")})`;
     }
 
     if (t instanceof FunctionTypeId) {
@@ -218,7 +218,7 @@ export function signature(
     }
 
     if (nd instanceof ModifierDefinition) {
-        return `${nd.name}(${argTs.map((t) => t.pp()).join(",")})`;
+        return `${nd.name}(${argTs.map((t) => { throw new Error("STUB"); }).join(",")})`;
     }
 
     const isLibFun =
@@ -226,15 +226,11 @@ export function signature(
         nd.vScope instanceof ContractDefinition &&
         nd.vScope.kind === ContractKind.Library;
 
-    const argSigTs: Array<[TypeIdentifier, boolean]> = argTs.map((t) => [
-        toSignatureType(t, ctx, isLibFun),
-        isTypeInStorage(t)
-    ]);
+    const argSigTs: Array<[TypeIdentifier, boolean]> = argTs.map((t) => { throw new Error("STUB"); });
 
     return `${nd.name}(${argSigTs
         .map(([t, isStorage]) => {
-            const tName = abiTypeIdToCanonicalName(t, ctx);
-            return isStorage ? `${tName} storage` : tName;
+            throw new Error("STUB");
         })
         .join(",")})`;
 }

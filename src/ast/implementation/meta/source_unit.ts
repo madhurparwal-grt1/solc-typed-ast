@@ -60,133 +60,91 @@ export class SourceUnit extends ASTNodeWithChildren<ASTNode> {
         license?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.sourceEntryKey = sourceEntryKey;
-        this.sourceListIndex = sourceListIndex;
-        this.absolutePath = absolutePath;
-        this.exportedSymbols = exportedSymbols;
-        this.license = license;
-
-        if (children) {
-            for (const node of children) {
-                this.appendChild(node);
-            }
-        }
+        throw new Error("STUB");
     }
 
     /**
      * References to pragma directives
      */
     get vPragmaDirectives(): readonly PragmaDirective[] {
-        return this.ownChildren.filter(
-            (node): node is PragmaDirective => node instanceof PragmaDirective
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to import directives
      */
     get vImportDirectives(): readonly ImportDirective[] {
-        return this.ownChildren.filter(
-            (node): node is ImportDirective => node instanceof ImportDirective
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to contract definitions
      */
     get vContracts(): readonly ContractDefinition[] {
-        return this.ownChildren.filter(
-            (node): node is ContractDefinition => node instanceof ContractDefinition
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level enum definitions
      */
     get vEnums(): readonly EnumDefinition[] {
-        return this.ownChildren.filter(
-            (node): node is EnumDefinition => node instanceof EnumDefinition
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level error definitions
      */
     get vErrors(): readonly ErrorDefinition[] {
-        return this.ownChildren.filter(
-            (node): node is ErrorDefinition => node instanceof ErrorDefinition
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level struct definitions
      */
     get vStructs(): readonly StructDefinition[] {
-        return this.ownChildren.filter(
-            (node): node is StructDefinition => node instanceof StructDefinition
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level function definitions (free functions)
      */
     get vFunctions(): readonly FunctionDefinition[] {
-        return this.ownChildren.filter(
-            (node): node is FunctionDefinition => node instanceof FunctionDefinition
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level event definitions
      */
     get vEvents(): readonly EventDefinition[] {
-        return this.ownChildren.filter(
-            (node): node is EventDefinition => node instanceof EventDefinition
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level constant variable definitions
      */
     get vVariables(): readonly VariableDeclaration[] {
-        return this.ownChildren.filter(
-            (node): node is VariableDeclaration => node instanceof VariableDeclaration
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level user-defined value type definitions
      */
     get vUserDefinedValueTypes(): readonly UserDefinedValueTypeDefinition[] {
-        return this.ownChildren.filter(
-            (node): node is UserDefinedValueTypeDefinition =>
-                node instanceof UserDefinedValueTypeDefinition
-        );
+        throw new Error("STUB");
     }
 
     /**
      * References to file-level using-for directives
      */
     get vUsingForDirectives(): readonly UsingForDirective[] {
-        return this.ownChildren.filter(
-            (node): node is UsingForDirective => node instanceof UsingForDirective
-        );
+        throw new Error("STUB");
     }
 
     /**
      * Referenced exported symbols
      */
     get vExportedSymbols(): ReadonlyMap<string, ExportedSymbol> {
-        const result = new Map<string, ExportedSymbol>();
-        const context = this.requiredContext;
-
-        for (const [name, id] of this.exportedSymbols.entries()) {
-            result.set(name, context.locate(id) as ExportedSymbol);
-        }
-
-        return result;
+        throw new Error("STUB");
     }
 
     /**
@@ -195,30 +153,6 @@ export class SourceUnit extends ASTNodeWithChildren<ASTNode> {
      * then returns `undefined`.
      */
     get abiEncoderVersion(): ABIEncoderVersion | undefined {
-        for (const directive of this.vPragmaDirectives) {
-            if (directive.vIdentifier === "abicoder") {
-                const raw = directive.literals[1];
-
-                if (raw === "v1") {
-                    return ABIEncoderVersion.V1;
-                }
-
-                if (raw === "v2") {
-                    return ABIEncoderVersion.V2;
-                }
-
-                throw new Error(`Unknown abicoder pragma version ${raw}`);
-            }
-
-            if (
-                directive.vIdentifier === "experimental" &&
-                directive.literals.length === 2 &&
-                ABIEncoderVersions.has(directive.literals[1])
-            ) {
-                return directive.literals[1] as ABIEncoderVersion;
-            }
-        }
-
-        return undefined;
+        throw new Error("STUB");
     }
 }

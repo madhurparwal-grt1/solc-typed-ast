@@ -9,24 +9,6 @@ export class ModernBinaryOperationProcessor extends ModernExpressionProcessor<Bi
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof BinaryOperation> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const operator: string = raw.operator;
-        const func: number | undefined = raw.function;
-
-        const leftExpression = reader.convert(raw.leftExpression, config) as Expression;
-        const rightExpression = reader.convert(raw.rightExpression, config) as Expression;
-
-        return [
-            id,
-            src,
-            typeString,
-            typeIdentifier,
-            operator,
-            leftExpression,
-            rightExpression,
-            func,
-            raw
-        ];
+        throw new Error("STUB");
     }
 }

@@ -294,12 +294,9 @@ function* lookupInBlock(
         declarations = scope.getChildrenByType(VariableDeclaration);
     } else {
         declarations = scope.children
-            .filter((node) => node instanceof VariableDeclarationStatement)
+            .filter((node) => { throw new Error("STUB"); })
             .reduce(
-                (declarations: VariableDeclaration[], statement) => [
-                    ...declarations,
-                    ...(statement as VariableDeclarationStatement).vDeclarations
-                ],
+                (declarations: VariableDeclaration[], statement) => { throw new Error("STUB"); },
                 []
             );
     }
@@ -332,14 +329,14 @@ function lookupInScope(
     } else if (scope instanceof FunctionDefinition) {
         results = lookupInFunctionDefinition(name, scope);
     } else if (scope instanceof ModifierDefinition) {
-        results = scope.vParameters.vParameters.filter((parameter) => parameter.name === name);
+        results = scope.vParameters.vParameters.filter((parameter) => { throw new Error("STUB"); });
     } else if (scope instanceof VariableDeclarationStatement) {
-        results = scope.vDeclarations.filter((decl) => decl.name === name);
+        results = scope.vDeclarations.filter((decl) => { throw new Error("STUB"); });
     } else if (scope instanceof Block || scope instanceof UncheckedBlock) {
         results = lookupInBlock(name, scope, inference);
     } else if (scope instanceof TryCatchClause) {
         results = scope.vParameters
-            ? scope.vParameters.vParameters.filter((param) => param.name === name)
+            ? scope.vParameters.vParameters.filter((param) => { throw new Error("STUB"); })
             : [];
     } else {
         throw new Error(`Unknown scope node ${pp(scope)}`);
@@ -396,11 +393,7 @@ export function resolveAny(
                             forAll(
                                 res,
                                 (def) =>
-                                    def instanceof EventDefinition ||
-                                    def instanceof FunctionDefinition ||
-                                    (def instanceof VariableDeclaration &&
-                                        def.stateVariable &&
-                                        def.visibility === StateVariableVisibility.Public)
+                                    { throw new Error("STUB"); }
                             ),
                             "Unexpected intermediate def for {0} in {1}: {2}",
                             element,

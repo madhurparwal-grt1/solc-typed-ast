@@ -24,15 +24,10 @@ export class IndexAccess extends Expression {
         indexExpression?: Expression,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vBaseExpression = baseExpression;
-        this.vIndexExpression = indexExpression;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vBaseExpression, this.vIndexExpression);
+        throw new Error("STUB");
     }
 }

@@ -8,13 +8,6 @@ export class LegacyElementaryTypeNameProcessor extends LegacyTypeNameProcessor<E
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ElementaryTypeName> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-
-        const name: string = attributes.name;
-        const stateMutability: "nonpayable" | "payable" =
-            "stateMutability" in attributes ? attributes.stateMutability : "nonpayable";
-
-        return [id, src, typeString, typeIdentifier, name, stateMutability, raw];
+        throw new Error("STUB");
     }
 }

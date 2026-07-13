@@ -50,13 +50,13 @@ export function abiTypeToCanonicalName(t: TypeNode): string {
 
     if (t instanceof TupleType) {
         assert(
-            forAll(t.elements, (el) => el !== null),
+            forAll(t.elements, (el) => { throw new Error("STUB"); }),
             "Empty tuple elements are disallowed. Got {0}",
             t
         );
 
         return `(${t.elements
-            .map((elementT) => abiTypeToCanonicalName(elementT as TypeNode))
+            .map((elementT) => { throw new Error("STUB"); })
             .join(",")})`;
     }
 
@@ -99,13 +99,13 @@ export function abiTypeToLibraryCanonicalName(t: TypeNode): string {
 
     if (t instanceof TupleType) {
         assert(
-            forAll(t.elements, (el) => el !== null),
+            forAll(t.elements, (el) => { throw new Error("STUB"); }),
             "Empty tuple elements are disallowed. Got {0}",
             t
         );
 
         return `(${t.elements
-            .map((elementT) => abiTypeToLibraryCanonicalName(elementT as TypeNode))
+            .map((elementT) => { throw new Error("STUB"); })
             .join(",")})`;
     }
 

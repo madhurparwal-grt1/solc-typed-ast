@@ -19,14 +19,10 @@ export class ExpressionStatement extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.vExpression = expression;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vExpression);
+        throw new Error("STUB");
     }
 }

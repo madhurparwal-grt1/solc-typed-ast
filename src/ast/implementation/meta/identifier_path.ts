@@ -24,18 +24,10 @@ export class IdentifierPath extends ASTNode {
      * Is `undefined` when this is a Solidity internal identifier.
      */
     get vReferencedDeclaration(): ASTNode | undefined {
-        return this.requiredContext.locate(this.referencedDeclaration);
+        throw new Error("STUB");
     }
 
     set vReferencedDeclaration(value: ASTNode | undefined) {
-        if (value === undefined) {
-            this.referencedDeclaration = -1;
-        } else {
-            if (!this.requiredContext.contains(value)) {
-                throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-            }
-
-            this.referencedDeclaration = value.id;
-        }
+        throw new Error("STUB");
     }
 }

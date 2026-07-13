@@ -8,10 +8,6 @@ export class ModernPlaceholderStatementProcessor extends ModernNodeProcessor<Pla
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof PlaceholderStatement> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const documentation: string | undefined = raw.documentation;
-
-        return [id, src, documentation, raw];
+        throw new Error("STUB");
     }
 }

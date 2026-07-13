@@ -128,36 +128,15 @@ const RX_FIXED_BYTES = /^bytes([0-9]+)$/;
  */
 export const builtinTypes: { [key: string]: (arg: ASTNode) => TypeNode } = {
     revert: (arg: ASTNode) => {
-        const hasMsg = arg.parent instanceof FunctionCall && arg.parent.vArguments.length === 1;
-        const argTs = hasMsg ? [types.stringMemory] : [];
-
-        return new BuiltinFunctionType("revert", argTs, []);
+        throw new Error("STUB");
     },
 
     require: (arg: ASTNode) => {
-        let argTs: TypeNode[];
-
-        if (arg.parent instanceof FunctionCall && arg.parent.vArguments.length === 2) {
-            const secondArg = arg.parent.vArguments[1];
-
-            if (secondArg.typeString === "error") {
-                argTs = [types.bool, types.error];
-            } else {
-                argTs = [types.bool, types.stringMemory];
-            }
-        } else {
-            argTs = [types.bool];
-        }
-
-        return new BuiltinFunctionType("require", argTs, []);
+        throw new Error("STUB");
     },
 
     this: (node) => {
-        const contract = node.getClosestParentByType(ContractDefinition);
-
-        assert(contract !== undefined, "this ({0}) used outside of a contract", node);
-
-        return new UserDefinedType(contract.name, contract);
+        throw new Error("STUB");
     }
 };
 
@@ -662,7 +641,7 @@ export class InferType {
             if (
                 forAny(
                     getFallbackRecvFuns(argT.definition),
-                    (fn) => fn.stateMutability === FunctionStateMutability.Payable
+                    (fn) => { throw new Error("STUB"); }
                 )
             ) {
                 return types.addressPayable;
@@ -729,7 +708,7 @@ export class InferType {
         const args = callsite.vArguments;
         const callExp = callsite.vExpression;
 
-        const argTs: TypeNode[] = args.map((arg) => this.typeOf(arg));
+        const argTs: TypeNode[] = args.map((arg) => { throw new Error("STUB"); });
 
         const argTsWithImplictArg =
             callExp instanceof MemberAccess ? [this.typeOf(callExp.vExpression), ...argTs] : argTs;
@@ -774,7 +753,7 @@ export class InferType {
         node: FunctionCall,
         calleeT: BuiltinFunctionType
     ): BuiltinFunctionType {
-        const argTs = node.vArguments.map((arg) => this.typeOf(arg));
+        const argTs = node.vArguments.map((arg) => { throw new Error("STUB"); });
         const m: TypeSubstituion = new Map();
 
         /**
@@ -821,9 +800,7 @@ export class InferType {
             // Convert any calldata pointers back to memory for external calls
             if (node.vExpression instanceof MemberAccess) {
                 rets = rets.map((retT) =>
-                    retT instanceof PointerType && retT.location === DataLocation.CallData
-                        ? specializeType(generalizeType(retT)[0], DataLocation.Memory)
-                        : retT
+                    { throw new Error("STUB"); }
                 );
             }
         } else if (resolvedCalleeT instanceof BuiltinFunctionType) {
@@ -1115,7 +1092,7 @@ export class InferType {
 
         if (def instanceof EventDefinition) {
             const argTs = def.vParameters.vParameters.map((arg) =>
-                this.variableDeclarationToTypeNode(arg)
+                { throw new Error("STUB"); }
             );
 
             return new EventType(def.name, argTs);
@@ -1123,7 +1100,7 @@ export class InferType {
 
         if (def instanceof ModifierDefinition) {
             const argTs = def.vParameters.vParameters.map((arg) =>
-                this.variableDeclarationToTypeNode(arg)
+                { throw new Error("STUB"); }
             );
 
             return new ModifierType(def.name, argTs);
@@ -1370,7 +1347,7 @@ export class InferType {
             /// Fields of structs
             if (toT instanceof UserDefinedType && toT.definition instanceof StructDefinition) {
                 const fields = toT.definition.vMembers.filter(
-                    (fieldDef) => fieldDef.name === node.memberName
+                    (fieldDef) => { throw new Error("STUB"); }
                 );
 
                 if (fields.length === 1) {
@@ -1424,7 +1401,7 @@ export class InferType {
                 const def = baseT.type.definition;
 
                 if (def instanceof EnumDefinition) {
-                    if (def.vMembers.map((val) => val.name).includes(node.memberName)) {
+                    if (def.vMembers.map((val) => { throw new Error("STUB"); }).includes(node.memberName)) {
                         return baseT.type;
                     }
                 }
@@ -1443,7 +1420,7 @@ export class InferType {
                     const argTs = [];
 
                     if (node.parent instanceof FunctionCall) {
-                        argTs.push(...node.parent.vArguments.map((arg) => this.typeOf(arg)));
+                        argTs.push(...node.parent.vArguments.map((arg) => { throw new Error("STUB"); }));
 
                         for (const argT of argTs) {
                             if (
@@ -1638,7 +1615,7 @@ export class InferType {
 
     typeOfTupleExpression(node: TupleExpression): TypeNode {
         const componentTs = node.vOriginalComponents.map((cmp) =>
-            cmp === null ? cmp : this.typeOf(cmp)
+            { throw new Error("STUB"); }
         );
 
         if (!node.isInlineArray) {
@@ -1659,13 +1636,13 @@ export class InferType {
 
         assert(node.vComponents.length > 0, "Can't have an empty array initializer");
         assert(
-            forAll(componentTs, (elT) => elT !== null),
+            forAll(componentTs, (elT) => { throw new Error("STUB"); }),
             "Empty tuple elements are disallowed. Got {0}",
             node
         );
 
         let elT = componentTs.reduce((prev, cur) =>
-            this.inferCommonType(prev as TypeNode, cur as TypeNode)
+            { throw new Error("STUB"); }
         ) as TypeNode;
 
         if (elT instanceof IntLiteralType) {
@@ -1844,32 +1821,25 @@ export class InferType {
 
         const funs = defs.filter(
             (def): def is FunctionDefinition =>
-                def instanceof FunctionDefinition &&
-                (!externalOnly || // Only external/public functions visible on lookups on contract pointers
-                    def.visibility === FunctionVisibility.External ||
-                    def.visibility === FunctionVisibility.Public)
+                { throw new Error("STUB"); }
         );
 
         const getters = defs.filter(
             (def): def is VariableDeclaration =>
-                def instanceof VariableDeclaration &&
-                (!externalOnly || def.visibility === StateVariableVisibility.Public) // Only public vars are visible on lookups on contract pointers.
+                { throw new Error("STUB"); } // Only public vars are visible on lookups on contract pointers.
         );
 
         const typeDefs = defs.filter(
             (def): def is StructDefinition | EnumDefinition | ContractDefinition =>
-                !externalOnly && // Type Defs are not visible on lookups on contract pointers.
-                (def instanceof StructDefinition ||
-                    def instanceof EnumDefinition ||
-                    def instanceof ContractDefinition)
+                { throw new Error("STUB"); }
         );
 
         const eventDefs = defs.filter(
-            (def): def is EventDefinition => !externalOnly && def instanceof EventDefinition
+            (def): def is EventDefinition => { throw new Error("STUB"); }
         );
 
         const errorDefs = defs.filter(
-            (def): def is ErrorDefinition => !externalOnly && def instanceof ErrorDefinition
+            (def): def is ErrorDefinition => { throw new Error("STUB"); }
         );
 
         // For external calls its possible to have a mixture of functions and getters
@@ -1884,8 +1854,8 @@ export class InferType {
             );
 
             return new FunctionLikeSetType([
-                ...funs.map((funDef) => this.funDefToType(funDef)),
-                ...getters.map((varDecl) => this.getterFunType(varDecl))
+                ...funs.map((funDef) => { throw new Error("STUB"); }),
+                ...getters.map((varDecl) => { throw new Error("STUB"); })
             ]);
         }
 
@@ -1910,7 +1880,7 @@ export class InferType {
                 return res;
             }
 
-            return new FunctionLikeSetType(funs.map((funDef) => this.funDefToType(funDef)));
+            return new FunctionLikeSetType(funs.map((funDef) => { throw new Error("STUB"); }));
         }
 
         if (getters.length > 0) {
@@ -1960,7 +1930,7 @@ export class InferType {
                 return this.eventDefToType(eventDefs[0]);
             }
 
-            return new FunctionLikeSetType(eventDefs.map((evtDef) => this.eventDefToType(evtDef)));
+            return new FunctionLikeSetType(eventDefs.map((evtDef) => { throw new Error("STUB"); }));
         }
 
         if (typeDefs.length > 0) {
@@ -2050,11 +2020,11 @@ export class InferType {
      */
     funDefToType(def: FunctionDefinition, implicitFirstArg = false): FunctionType {
         const argTs = def.vParameters.vParameters.map((arg) =>
-            this.variableDeclarationToTypeNode(arg)
+            { throw new Error("STUB"); }
         );
 
         const retTs = def.vReturnParameters.vParameters.map((arg) =>
-            this.variableDeclarationToTypeNode(arg)
+            { throw new Error("STUB"); }
         );
 
         return new FunctionType(
@@ -2069,7 +2039,7 @@ export class InferType {
 
     eventDefToType(def: EventDefinition): EventType {
         const argTs = def.vParameters.vParameters.map((arg) =>
-            this.variableDeclarationToTypeNode(arg)
+            { throw new Error("STUB"); }
         );
 
         return new EventType(def.name, argTs);
@@ -2077,7 +2047,7 @@ export class InferType {
 
     errDefToType(def: ErrorDefinition): ErrorType {
         const argTs = def.vParameters.vParameters.map((arg) =>
-            this.variableDeclarationToTypeNode(arg)
+            { throw new Error("STUB"); }
         );
 
         return new ErrorType(def.name, argTs);
@@ -2301,11 +2271,11 @@ export class InferType {
              * Even in 0.4.x can't have function declarations with `var` args.
              */
             const args = node.vParameterTypes.vParameters.map((arg) =>
-                this.variableDeclarationToTypeNode(arg)
+                { throw new Error("STUB"); }
             );
 
             const rets = node.vReturnParameterTypes.vParameters.map((arg) =>
-                this.variableDeclarationToTypeNode(arg)
+                { throw new Error("STUB"); }
             );
 
             return new FunctionType(undefined, args, rets, node.visibility, node.stateMutability);
@@ -2347,29 +2317,7 @@ export class InferType {
      * 2. What happens with return tuples? Are they always in memory?
      */
     isABITypeEncodingDynamic(typ: TypeNode): boolean {
-        if (
-            typ instanceof PointerType ||
-            typ instanceof ArrayType ||
-            typ instanceof StringType ||
-            typ instanceof BytesType
-        ) {
-            return true;
-        }
-
-        // Tuples in calldata with static elements
-        if (typ instanceof TupleType) {
-            for (const elT of typ.elements) {
-                assert(elT !== null, `Unexpected empty tuple element in {0}`, typ);
-
-                if (this.isABITypeEncodingDynamic(elT)) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        return false;
+        throw new Error("STUB");
     }
 
     isABIEncodable(type: TypeNode, encoderVersion: ABIEncoderVersion): boolean {
@@ -2412,7 +2360,7 @@ export class InferType {
 
             if (type.definition instanceof StructDefinition) {
                 return type.definition.vMembers.every((field) =>
-                    this.isABIEncodable(this.variableDeclarationToTypeNode(field), encoderVersion)
+                    { throw new Error("STUB"); }
                 );
             }
         }
@@ -2487,12 +2435,12 @@ export class InferType {
 
             if (type.definition instanceof StructDefinition) {
                 const fieldTs = type.definition.vMembers.map((fieldT) =>
-                    this.variableDeclarationToTypeNode(fieldT)
+                    { throw new Error("STUB"); }
                 );
 
                 return new TupleType(
                     fieldTs.map((fieldT) =>
-                        this.toABIEncodedType(fieldT, encoderVersion, normalizePointers)
+                        { throw new Error("STUB"); }
                     )
                 );
             }
@@ -2549,7 +2497,7 @@ export class InferType {
             const [getterArgs] = this.getterArgsAndReturn(node);
 
             args = getterArgs.map((type) =>
-                abiTypeToCanonicalName(this.toABIEncodedType(type, encoderVersion, true))
+                { throw new Error("STUB"); }
             );
         } else if (node instanceof TryCatchClause) {
             if (node.errorName === "") {
@@ -2559,7 +2507,7 @@ export class InferType {
             name = node.errorName;
 
             args = node.vParameters
-                ? node.vParameters.vParameters.map((arg) => getArgABITypeStr(arg, false))
+                ? node.vParameters.vParameters.map((arg) => { throw new Error("STUB"); })
                 : [];
         } else {
             if (node instanceof FunctionDefinition && (node.name === "" || node.isConstructor)) {
@@ -2576,9 +2524,9 @@ export class InferType {
                     (node instanceof FunctionDefinition &&
                         !isVisiblityExternallyCallable(node.visibility)))
             ) {
-                args = node.vParameters.vParameters.map((arg) => getArgABITypeStr(arg, true));
+                args = node.vParameters.vParameters.map((arg) => { throw new Error("STUB"); });
             } else {
-                args = node.vParameters.vParameters.map((arg) => getArgABITypeStr(arg, false));
+                args = node.vParameters.vParameters.map((arg) => { throw new Error("STUB"); });
             }
         }
 
@@ -2644,8 +2592,8 @@ export class InferType {
             }
 
             return selectors
-                .map((selector) => BigInt("0x" + selector))
-                .reduce((a, b) => a ^ b, 0n)
+                .map((selector) => { throw new Error("STUB"); })
+                .reduce((a, b) => { throw new Error("STUB"); }, 0n)
                 .toString(16)
                 .padStart(8, "0");
         }
@@ -2707,93 +2655,10 @@ export class InferType {
     }
 
     private isExternalCallContext(expr: Expression): boolean {
-        if (
-            expr instanceof Identifier ||
-            expr instanceof MemberAccess ||
-            expr instanceof FunctionCallOptions ||
-            expr instanceof FunctionCall
-        ) {
-            const exprT = this.typeOf(expr);
-
-            if (exprT instanceof UserDefinedType) {
-                if (exprT.definition instanceof ContractDefinition) {
-                    return true;
-                }
-            }
-
-            if (exprT instanceof TypeNameType) {
-                return (
-                    exprT.type instanceof UserDefinedType &&
-                    exprT.type.definition instanceof ContractDefinition &&
-                    exprT.type.definition.kind === ContractKind.Library
-                );
-            }
-        }
-
-        if (
-            expr instanceof MemberAccess ||
-            expr instanceof FunctionCallOptions ||
-            expr instanceof FunctionCall
-        ) {
-            return this.isExternalCallContext(expr.vExpression);
-        }
-
-        if (expr instanceof Conditional) {
-            return (
-                this.isExternalCallContext(expr.vTrueExpression) ||
-                this.isExternalCallContext(expr.vFalseExpression)
-            );
-        }
-
-        if (expr instanceof TupleExpression && expr.vComponents.length === 1) {
-            return this.isExternalCallContext(expr.vComponents[0]);
-        }
-
-        return false;
+        throw new Error("STUB");
     }
 
     isFunctionCallExternal(call: FunctionCall): boolean {
-        if (call.kind !== FunctionCallKind.FunctionCall) {
-            return false;
-        }
-
-        if (
-            call.vFunctionCallType === ExternalReferenceType.Builtin &&
-            CALL_BUILTINS.includes(call.vFunctionName)
-        ) {
-            return true;
-        }
-
-        let exprT = this.typeOf(call.vExpression);
-
-        if (exprT instanceof FunctionLikeSetType) {
-            const calleeT = this.typeOfCallee(call);
-
-            if (!(calleeT instanceof FunctionType)) {
-                return false;
-            }
-
-            exprT = calleeT;
-        }
-
-        if (exprT instanceof FunctionType) {
-            if (exprT.implicitFirstArg) {
-                /**
-                 * Calls via using-for are not considered as external.
-                 * Currently "implicitFirstArg" is used only for using-for.
-                 */
-                return false;
-            }
-
-            if (exprT.visibility === FunctionVisibility.External) {
-                return true;
-            }
-
-            if (exprT.visibility === FunctionVisibility.Public) {
-                return this.isExternalCallContext(call.vExpression);
-            }
-        }
-
-        return false;
+        throw new Error("STUB");
     }
 }

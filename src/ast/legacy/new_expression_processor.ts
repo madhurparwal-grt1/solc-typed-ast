@@ -9,10 +9,6 @@ export class LegacyNewExpressionProcessor extends LegacyExpressionProcessor<NewE
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof NewExpression> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const [typeName] = reader.convertArray(raw.children, config) as [TypeName];
-
-        return [id, src, typeString, typeIdentifier, typeName, raw];
+        throw new Error("STUB");
     }
 }

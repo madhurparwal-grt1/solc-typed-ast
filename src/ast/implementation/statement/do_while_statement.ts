@@ -22,15 +22,10 @@ export class DoWhileStatement extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.vCondition = condition;
-        this.vBody = body;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vCondition, this.vBody);
+        throw new Error("STUB");
     }
 }

@@ -29,16 +29,10 @@ export class TryCatchClause extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.errorName = errorName;
-        this.vParameters = parameters;
-        this.vBlock = block;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vParameters, this.vBlock);
+        throw new Error("STUB");
     }
 }

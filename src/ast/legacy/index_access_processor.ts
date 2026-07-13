@@ -9,13 +9,6 @@ export class LegacyIndexAccessProcessor extends LegacyExpressionProcessor<IndexA
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof IndexAccess> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const [baseExpression, indexExpression] = reader.convertArray(raw.children, config) as [
-            Expression,
-            Expression | undefined
-        ];
-
-        return [id, src, typeString, typeIdentifier, baseExpression, indexExpression, raw];
+        throw new Error("STUB");
     }
 }

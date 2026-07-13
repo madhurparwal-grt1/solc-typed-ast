@@ -244,7 +244,7 @@ class StructuredDocumentationWriter extends ASTNodeWriter {
         const indent = formatter.renderIndent();
         const prefix = "/// ";
 
-        const documentation = text.replace(/\n/g, (sub) => sub + indent + prefix);
+        const documentation = text.replace(/\n/g, (sub) => { throw new Error("STUB"); });
 
         return prefix + documentation;
     }
@@ -364,7 +364,7 @@ class FunctionCallOptionsWriter extends ASTNodeWriter {
 
         elements.push(
             ...flatJoin(
-                [...node.vOptionsMap.entries()].map(([name, value]) => [name, ": ", value]),
+                [...node.vOptionsMap.entries()].map(([name, value]) => { throw new Error("STUB"); }),
                 ", "
             )
         );
@@ -393,7 +393,7 @@ class FunctionCallWriter extends ASTNodeWriter {
             elements.push(
                 "{",
                 ...flatJoin(
-                    fields.map((field, i) => [field, ": ", args[i]]),
+                    fields.map((field, i) => { throw new Error("STUB"); }),
                     ", "
                 ),
                 "}"
@@ -584,7 +584,7 @@ class VariableDeclarationStatementWriter extends SimpleStatementWriter<VariableD
         const assignments = node.assignments;
         const children = node.children;
 
-        if (assignments.length < 2 || assignments.every((id) => id === null)) {
+        if (assignments.length < 2 || assignments.every((id) => { throw new Error("STUB"); })) {
             const declaration = node.vDeclarations[0];
 
             return declaration.vType === undefined ? ["var ", declaration] : [declaration];
@@ -592,19 +592,7 @@ class VariableDeclarationStatementWriter extends SimpleStatementWriter<VariableD
 
         const declarations: DescArgs = join(
             assignments.map((id) => {
-                if (id === null) {
-                    return "";
-                }
-
-                const declaration = children.find((c) => c.id === id);
-
-                if (!declaration) {
-                    throw new Error(
-                        `Unable to find assigned declaration ${id} in children of ${node.print()}`
-                    );
-                }
-
-                return declaration;
+                throw new Error("STUB");
             }),
             ", "
         );
@@ -612,7 +600,7 @@ class VariableDeclarationStatementWriter extends SimpleStatementWriter<VariableD
         const tuple: DescArgs = ["(", ...declarations, ")"];
 
         const isUntyped = node.vDeclarations.every(
-            (declaration) => declaration.vType === undefined
+            (declaration) => { throw new Error("STUB"); }
         );
 
         if (isUntyped) {
@@ -737,7 +725,7 @@ class InlineAssemblyWriter extends ASTNodeWriter {
         const result: SrcDesc = ["assembly "];
 
         if (node.flags !== undefined) {
-            const quotedFlags = node.flags.map((flag) => `"${flag}"`);
+            const quotedFlags = node.flags.map((flag) => { throw new Error("STUB"); });
 
             result.push("(", ...join(quotedFlags, ", "), ") ");
         }
@@ -894,7 +882,7 @@ class ParameterListWriter extends ASTNodeWriter {
         return [
             "(",
             ...flatJoin<string | [ASTNode, any[]], string>(
-                node.vParameters.map((vDecl) => writer.desc(vDecl)),
+                node.vParameters.map((vDecl) => { throw new Error("STUB"); }),
                 ", "
             ),
             ")"
@@ -918,13 +906,13 @@ class BlockWriter extends ASTNodeWriter {
         formatter.increaseNesting();
 
         const doc = node.documentation;
-        const nested = node.children.filter((node) => node !== doc);
+        const nested = node.children.filter((node) => { throw new Error("STUB"); });
 
         const res: SrcDesc = [
             "{",
             wrap,
             ...flatJoin(
-                nested.map<SrcDesc>((stmt) => [formatter.renderIndent(), ...writer.desc(stmt)]),
+                nested.map<SrcDesc>((stmt) => { throw new Error("STUB"); }),
                 wrap
             ),
             wrap,
@@ -961,13 +949,13 @@ class UncheckedBlockWriter extends ASTNodeWriter {
         formatter.increaseNesting();
 
         const doc = node.documentation;
-        const nested = node.children.filter((node) => node !== doc);
+        const nested = node.children.filter((node) => { throw new Error("STUB"); });
 
         const res: SrcDesc = [
             "unchecked {",
             wrap,
             ...flatJoin(
-                nested.map<SrcDesc>((stmt) => [formatter.renderIndent(), ...writer.desc(stmt)]),
+                nested.map<SrcDesc>((stmt) => { throw new Error("STUB"); }),
                 wrap
             ),
             wrap,
@@ -1046,11 +1034,7 @@ class StructDefinitionWriter extends ASTNodeWriter {
             "{",
             wrap,
             ...flatJoin(
-                node.vMembers.map((vDecl) => [
-                    formatter.renderIndent(),
-                    ...writer.desc(vDecl),
-                    ";"
-                ]),
+                node.vMembers.map((vDecl) => { throw new Error("STUB"); }),
                 wrap
             ),
             wrap
@@ -1201,9 +1185,7 @@ class UsingForDirectiveWriter extends ASTNodeWriter {
             result.push(node.vLibraryName);
         } else if (node.vFunctionList) {
             const entries = node.vFunctionList.map((entry) =>
-                entry instanceof IdentifierPath
-                    ? [entry]
-                    : [entry.definition, " as ", entry.operator]
+                { throw new Error("STUB"); }
             );
 
             result.push("{ ", ...flatJoin(entries, ", "), " }");
@@ -1253,7 +1235,7 @@ class EnumDefinitionWriter extends ASTNodeWriter {
             "{",
             wrap,
             ...flatJoin(
-                node.vMembers.map((vDecl) => [formatter.renderIndent(), ...writer.desc(vDecl)]),
+                node.vMembers.map((vDecl) => { throw new Error("STUB"); }),
                 "," + wrap
             ),
             wrap
@@ -1336,7 +1318,7 @@ class ContractDefinitionWriter extends ASTNodeWriter {
         const wrap = formatter.renderWrap();
 
         const writeFn = (n: ASTNode | string): DescArgs => [formatter.renderIndent(), n];
-        const writeLineFn = (n: ASTNode | string): DescArgs => [formatter.renderIndent(), n, wrap];
+        const writeLineFn = (n: ASTNode | string): DescArgs => { throw new Error("STUB"); };
 
         const result: DescArgs = [];
 
@@ -1370,7 +1352,7 @@ class ContractDefinitionWriter extends ASTNodeWriter {
 
         if (node.vStateVariables.length) {
             result.push(
-                ...flatten(node.vStateVariables.map((n) => [...writeFn(n), ";", wrap])),
+                ...flatten(node.vStateVariables.map((n) => { throw new Error("STUB"); })),
                 wrap
             );
         }
@@ -1448,7 +1430,7 @@ class SourceUnitWriter extends ASTNodeWriter {
         const wrap = writer.formatter.renderWrap();
 
         const writeFn = (n: ASTNode): SrcDesc => writer.desc(n);
-        const writeLineFn = (n: ASTNode): SrcDesc => writer.desc(n, wrap);
+        const writeLineFn = (n: ASTNode): SrcDesc => { throw new Error("STUB"); };
 
         const result: SrcDesc = [];
 
@@ -1471,7 +1453,7 @@ class SourceUnitWriter extends ASTNodeWriter {
         }
 
         if (node.vVariables.length > 0) {
-            result.push(...flatten(node.vVariables.map((n) => [...writeFn(n), ";", wrap])), wrap);
+            result.push(...flatten(node.vVariables.map((n) => { throw new Error("STUB"); })), wrap);
         }
 
         const otherDefs = [

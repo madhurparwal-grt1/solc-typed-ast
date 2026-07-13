@@ -9,11 +9,6 @@ export class ModernMappingProcessor extends ModernTypeNameProcessor<Mapping> {
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Mapping> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const keyType = reader.convert(raw.keyType, config) as TypeName;
-        const valueType = reader.convert(raw.valueType, config) as TypeName;
-
-        return [id, src, typeString, typeIdentifier, keyType, valueType, raw];
+        throw new Error("STUB");
     }
 }

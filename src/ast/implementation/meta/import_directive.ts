@@ -54,77 +54,39 @@ export class ImportDirective extends ASTNode {
         sourceUnit: number,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.file = file;
-        this.absolutePath = absolutePath;
-        this.unitAlias = unitAlias;
-        this.symbolAliases = symbolAliases;
-        this.scope = scope;
-        this.sourceUnit = sourceUnit;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        const nodes: ASTNode[] = [];
-
-        for (const alias of this.symbolAliases) {
-            if (alias.foreign instanceof Identifier) {
-                nodes.push(alias.foreign);
-            }
-        }
-
-        return nodes;
+        throw new Error("STUB");
     }
 
     /**
      * Reference to its scoped source unit
      */
     get vScope(): SourceUnit {
-        return this.requiredContext.locate(this.scope) as SourceUnit;
+        throw new Error("STUB");
     }
 
     set vScope(value: SourceUnit) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.scope = value.id;
+        throw new Error("STUB");
     }
 
     /**
      * Reference to the imported source unit
      */
     get vSourceUnit(): SourceUnit {
-        return this.requiredContext.locate(this.sourceUnit) as SourceUnit;
+        throw new Error("STUB");
     }
 
     set vSourceUnit(value: SourceUnit) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.sourceUnit = value.id;
+        throw new Error("STUB");
     }
 
     /**
      * Symbol aliases, resolved to their original declarations.
      */
     get vSymbolAliases(): ResolvedSymbolAlias[] {
-        const result: ResolvedSymbolAlias[] = [];
-        const candidates = this.vSourceUnit.vExportedSymbols;
-
-        for (const alias of this.symbolAliases) {
-            if (alias.foreign instanceof Identifier) {
-                const definition = candidates.get(alias.foreign.name) as SymbolOrigin | undefined;
-
-                if (definition) {
-                    result.push([definition, alias.local === null ? undefined : alias.local]);
-                }
-            }
-        }
-
-        return result;
+        throw new Error("STUB");
     }
 }

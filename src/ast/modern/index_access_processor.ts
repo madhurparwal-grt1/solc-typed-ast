@@ -9,13 +9,6 @@ export class ModernIndexAccessProcessor extends ModernExpressionProcessor<IndexA
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof IndexAccess> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const baseExpression = reader.convert(raw.baseExpression, config) as Expression;
-        const indexExpression = raw.indexExpression
-            ? (reader.convert(raw.indexExpression, config) as Expression)
-            : undefined;
-
-        return [id, src, typeString, typeIdentifier, baseExpression, indexExpression, raw];
+        throw new Error("STUB");
     }
 }

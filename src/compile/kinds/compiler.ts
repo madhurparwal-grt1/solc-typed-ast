@@ -29,42 +29,7 @@ export class NativeCompiler extends Compiler {
         const child = spawn(this.path, ["--standard-json"], {});
 
         return new Promise((resolve, reject) => {
-            child.stdin.write(JSON.stringify(input), "utf-8");
-            child.stdin.end();
-
-            let stdout = "";
-            let stderr = "";
-
-            child.stdout.on("data", (data) => {
-                stdout += data;
-            });
-
-            child.stderr.on("data", (data) => {
-                stderr += data;
-            });
-
-            child.on("close", (code) => {
-                if (code !== 0) {
-                    reject(`Compiler exited with code ${code}, stderr: ${stderr}`);
-                    return;
-                }
-
-                if (stderr !== "") {
-                    reject(`Compiler exited with non-empty stderr: ${stderr}`);
-                    return;
-                }
-
-                let outJson: any;
-
-                try {
-                    outJson = JSON.parse(stdout);
-                } catch (e) {
-                    reject(e);
-                    return;
-                }
-
-                resolve(outJson);
-            });
+            throw new Error("STUB");
         });
     }
 }
@@ -136,7 +101,7 @@ export async function getCompilerForVersion<T extends CompilerMapping>(
         compilerLocalPath = getCompilerLocalPath(prefix, compilerFileName);
 
         if (!fse.existsSync(compilerLocalPath)) {
-            const build = md.builds.find((b) => b.version === version);
+            const build = md.builds.find((b) => { throw new Error("STUB"); });
 
             assert(
                 build !== undefined,

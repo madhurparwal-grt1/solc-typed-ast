@@ -25,16 +25,11 @@ export class FunctionCallOptions extends Expression {
         options: Map<string, Expression>,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vExpression = expression;
-        this.vOptionsMap = options;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vExpression, this.vOptions);
+        throw new Error("STUB");
     }
 
     /**
@@ -45,7 +40,7 @@ export class FunctionCallOptions extends Expression {
      * Will contain `["gas", "value"]`.
      */
     get names(): Iterable<string> {
-        return this.vOptionsMap.keys();
+        throw new Error("STUB");
     }
 
     /**
@@ -56,6 +51,6 @@ export class FunctionCallOptions extends Expression {
      * Will contain `[2000, 1 gwei]` literal expressions.
      */
     get vOptions(): Iterable<Expression> {
-        return this.vOptionsMap.values();
+        throw new Error("STUB");
     }
 }

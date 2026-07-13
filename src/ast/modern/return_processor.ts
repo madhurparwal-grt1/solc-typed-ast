@@ -9,15 +9,6 @@ export class ModernReturnProcessor extends ModernNodeProcessor<Return> {
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Return> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const functionReturnParameters: number = raw.functionReturnParameters;
-        const documentation: string | undefined = raw.documentation;
-
-        const expression = raw.expression
-            ? (reader.convert(raw.expression, config) as Expression)
-            : undefined;
-
-        return [id, src, functionReturnParameters, expression, documentation, raw];
+        throw new Error("STUB");
     }
 }

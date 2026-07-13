@@ -23,16 +23,11 @@ export class TupleExpression extends Expression {
         components: Array<Expression | null>,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.isInlineArray = isInlineArray;
-        this.vOriginalComponents = components;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.vComponents;
+        throw new Error("STUB");
     }
 
     /**
@@ -41,27 +36,13 @@ export class TupleExpression extends Expression {
      * The `null` value is used to represent empty spots.
      */
     get components(): ReadonlyArray<number | null> {
-        const result: Array<number | null> = [];
-
-        for (const component of this.vOriginalComponents) {
-            result.push(component === null ? null : component.id);
-        }
-
-        return result;
+        throw new Error("STUB");
     }
 
     /**
      * An array of non-`null` components
      */
     get vComponents(): readonly Expression[] {
-        const result: Expression[] = [];
-
-        for (const component of this.vOriginalComponents) {
-            if (component !== null) {
-                result.push(component);
-            }
-        }
-
-        return result;
+        throw new Error("STUB");
     }
 }

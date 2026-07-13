@@ -27,35 +27,21 @@ export class MemberAccess extends Expression {
         referencedDeclaration: number,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vExpression = expression;
-        this.memberName = memberName;
-        this.referencedDeclaration = referencedDeclaration;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vExpression);
+        throw new Error("STUB");
     }
 
     /**
      * Reference to the declaration
      */
     get vReferencedDeclaration(): ASTNode | undefined {
-        return this.requiredContext.locate(this.referencedDeclaration);
+        throw new Error("STUB");
     }
 
     set vReferencedDeclaration(value: ASTNode | undefined) {
-        if (value === undefined) {
-            this.referencedDeclaration = -1;
-        } else {
-            if (!this.requiredContext.contains(value)) {
-                throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-            }
-
-            this.referencedDeclaration = value.id;
-        }
+        throw new Error("STUB");
     }
 }

@@ -112,37 +112,11 @@ export class FunctionDefinition extends ASTNode {
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.implemented = body !== undefined;
-        this.virtual = virtual;
-        this.scope = scope;
-        this.kind = kind;
-        this.name = name;
-        this.visibility = visibility;
-        this.stateMutability = stateMutability;
-        this.isConstructor = isConstructor;
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
-
-        this.vParameters = parameters;
-        this.vReturnParameters = returnParameters;
-        this.vModifiers = modifiers;
-        this.vOverrideSpecifier = overrideSpecifier;
-        this.vBody = body;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(
-            this.documentation,
-            this.vParameters,
-            this.vOverrideSpecifier,
-            this.vModifiers,
-            this.vReturnParameters,
-            this.vBody
-        );
+        throw new Error("STUB");
     }
 
     /**
@@ -151,14 +125,10 @@ export class FunctionDefinition extends ASTNode {
      * (since Solidity 0.7.1).
      */
     get vScope(): ContractDefinition | SourceUnit {
-        return this.requiredContext.locate(this.scope) as ContractDefinition | SourceUnit;
+        throw new Error("STUB");
     }
 
     set vScope(value: ContractDefinition | SourceUnit) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.scope = value.id;
+        throw new Error("STUB");
     }
 }

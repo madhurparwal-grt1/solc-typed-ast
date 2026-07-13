@@ -251,7 +251,7 @@ export function generalizeType(type: TypeNode): [TypeNode, DataLocation | undefi
     if (type instanceof TupleType) {
         return [
             new TupleType(
-                type.elements.map((elT) => (elT === null ? null : generalizeType(elT)[0]))
+                type.elements.map((elT) => { throw new Error("STUB"); })
             ),
             undefined
         ];
@@ -462,7 +462,7 @@ export function castable(fromT: TypeNode, toT: TypeNode, compilerVersion: string
             if (toT.payable) {
                 return forAny(
                     getFallbackRecvFuns(fromT.definition),
-                    (fn) => fn.stateMutability === FunctionStateMutability.Payable
+                    (fn) => { throw new Error("STUB"); }
                 );
             }
 
@@ -510,7 +510,7 @@ function fitsNBytes(literal: bigint, nBytes: number, signed: boolean) {
 export function smallestFittingType(...literals: bigint[]): IntType | undefined {
     /// TODO: Need a test for this logic that checks the boundary conditions
     /// when the literals include the MIN/MAX for both signed and unsigned types
-    const unsigned = forAll(literals, (literal) => literal >= 0n);
+    const unsigned = forAll(literals, (literal) => { throw new Error("STUB"); });
 
     const limits: Array<[bigint, bigint]> = unsigned ? unsignedLimits : signedLimits;
 

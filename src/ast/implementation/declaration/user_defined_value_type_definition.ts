@@ -28,30 +28,24 @@ export class UserDefinedValueTypeDefinition extends ASTNode {
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.name = name;
-        this.underlyingType = underlyingType;
-        this.nameLocation = nameLocation;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.underlyingType);
+        throw new Error("STUB");
     }
 
     /**
      * Canonical name (or qualified name), e.g. `DefiningContract.SomeType`
      */
     get canonicalName(): string {
-        return getFQDefName(this);
+        throw new Error("STUB");
     }
 
     /**
      * Reference to its scoped contract or source unit
      */
     get vScope(): ContractDefinition | SourceUnit {
-        return this.parent as ContractDefinition | SourceUnit;
+        throw new Error("STUB");
     }
 }

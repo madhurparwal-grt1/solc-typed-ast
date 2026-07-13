@@ -48,24 +48,14 @@ export class StructDefinition extends ASTNodeWithChildren<
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.name = name;
-        this.scope = scope;
-        this.visibility = visibility;
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
-
-        for (const member of members) {
-            this.appendChild(member);
-        }
+        throw new Error("STUB");
     }
 
     /**
      * Canonical name (or qualified name), e.g. `DefiningContract.SomeStruct`
      */
     get canonicalName(): string {
-        return getFQDefName(this);
+        throw new Error("STUB");
     }
 
     /**
@@ -75,11 +65,11 @@ export class StructDefinition extends ASTNodeWithChildren<
      * - Is instance of `StructuredDocumentation` when specified and compiler version is `0.6.3` or newer.
      */
     get documentation(): string | StructuredDocumentation | undefined {
-        return getDocumentation(this);
+        throw new Error("STUB");
     }
 
     set documentation(value: string | StructuredDocumentation | undefined) {
-        setDocumentation(this, value);
+        throw new Error("STUB");
     }
 
     /**
@@ -91,34 +81,28 @@ export class StructDefinition extends ASTNodeWithChildren<
      * - Is type of `string` for compatibility reasons.
      */
     get danglingDocumentation(): string | StructuredDocumentation | undefined {
-        return getDanglingDocumentation(this);
+        throw new Error("STUB");
     }
 
     set danglingDocumentation(value: string | StructuredDocumentation | undefined) {
-        setDanglingDocumentation(this, value);
+        throw new Error("STUB");
     }
 
     /**
      * Members of the struct
      */
     get vMembers(): readonly VariableDeclaration[] {
-        return this.ownChildren.filter(
-            (node): node is VariableDeclaration => node instanceof VariableDeclaration
-        );
+        throw new Error("STUB");
     }
 
     /**
      * Reference to its scoped contract or source unit
      */
     get vScope(): ContractDefinition | SourceUnit {
-        return this.requiredContext.locate(this.scope) as ContractDefinition | SourceUnit;
+        throw new Error("STUB");
     }
 
     set vScope(value: ContractDefinition | SourceUnit) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.scope = value.id;
+        throw new Error("STUB");
     }
 }

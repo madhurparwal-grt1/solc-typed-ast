@@ -31,16 +31,10 @@ export class Conditional extends Expression {
         falseExpression: Expression,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vCondition = condition;
-        this.vTrueExpression = trueExpression;
-        this.vFalseExpression = falseExpression;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vCondition, this.vTrueExpression, this.vFalseExpression);
+        throw new Error("STUB");
     }
 }

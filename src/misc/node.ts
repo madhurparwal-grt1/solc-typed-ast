@@ -24,7 +24,7 @@ export abstract class Node implements StructEqualityComparable, PPAble {
     abstract getFields(): any[];
 
     getChildren(): Node[] {
-        return this.getFields().filter((field) => field instanceof Node);
+        return this.getFields().filter((field) => { throw new Error("STUB"); });
     }
 
     walk(cb: (node: Node) => void): void {
@@ -36,14 +36,10 @@ export abstract class Node implements StructEqualityComparable, PPAble {
     }
 
     get requiredSrc(): Range {
-        assert(this.src !== undefined, `Missing source information for node ${this.pp()}`);
-
-        return this.src;
+        throw new Error("STUB");
     }
 
     getSourceFragment(src: string): string {
-        const rng = this.requiredSrc;
-
-        return src.slice(rng.start.offset, rng.end.offset);
+        throw new Error("STUB");
     }
 }

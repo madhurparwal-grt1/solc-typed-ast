@@ -27,17 +27,10 @@ export class Assignment extends Expression {
         rightHandSide: Expression,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.operator = operator;
-
-        this.vLeftHandSide = leftHandSide;
-        this.vRightHandSide = rightHandSide;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vLeftHandSide, this.vRightHandSide);
+        throw new Error("STUB");
     }
 }

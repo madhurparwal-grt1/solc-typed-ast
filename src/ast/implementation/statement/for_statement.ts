@@ -37,23 +37,10 @@ export class ForStatement extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.vInitializationExpression = initializationExpression;
-        this.vCondition = condition;
-        this.vLoopExpression = loopExpression;
-        this.vBody = body;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(
-            this.documentation,
-            this.vInitializationExpression,
-            this.vCondition,
-            this.vLoopExpression,
-            this.vBody
-        );
+        throw new Error("STUB");
     }
 }

@@ -29,7 +29,7 @@ export class Statement extends ASTNode {
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation);
+        throw new Error("STUB");
     }
 }
 
@@ -58,11 +58,11 @@ export class StatementWithChildren<T extends ASTNode>
      * - Is instance of `StructuredDocumentation` when specified and compiler version is `0.6.3` or newer.
      */
     get documentation(): string | StructuredDocumentation | undefined {
-        return getDocumentation(this);
+        throw new Error("STUB");
     }
 
     set documentation(value: string | StructuredDocumentation | undefined) {
-        setDocumentation(this, value);
+        throw new Error("STUB");
     }
 
     /**
@@ -74,10 +74,10 @@ export class StatementWithChildren<T extends ASTNode>
      * - Is type of `string` for compatibility reasons.
      */
     get danglingDocumentation(): string | StructuredDocumentation | undefined {
-        return getDanglingDocumentation(this);
+        throw new Error("STUB");
     }
 
     set danglingDocumentation(value: string | StructuredDocumentation | undefined) {
-        setDanglingDocumentation(this, value);
+        throw new Error("STUB");
     }
 }

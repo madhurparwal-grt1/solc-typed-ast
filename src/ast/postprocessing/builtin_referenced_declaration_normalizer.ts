@@ -9,12 +9,7 @@ type SupportedNode = Identifier | MemberAccess | IdentifierPath | UserDefinedTyp
 
 export class BuiltinReferencedDeclarationNormalizer implements ASTNodePostprocessor<SupportedNode> {
     process(node: SupportedNode, context: ASTContext): void {
-        if (
-            node.referencedDeclaration >= 0 &&
-            context.locate(node.referencedDeclaration) === undefined
-        ) {
-            node.referencedDeclaration = -1;
-        }
+        throw new Error("STUB");
     }
 
     isSupportedNode(node: ASTNode): node is SupportedNode {

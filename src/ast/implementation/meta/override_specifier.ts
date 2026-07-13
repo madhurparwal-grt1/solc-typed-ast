@@ -9,17 +9,13 @@ export class OverrideSpecifier extends ASTNodeWithChildren<UserDefinedTypeName |
         overrides: Iterable<UserDefinedTypeName | IdentifierPath>,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        for (const override of overrides) {
-            this.appendChild(override);
-        }
+        throw new Error("STUB");
     }
 
     /**
      * Reference to a user-defined types, whose functions are being overridden.
      */
     get vOverrides(): Array<UserDefinedTypeName | IdentifierPath> {
-        return this.ownChildren;
+        throw new Error("STUB");
     }
 }

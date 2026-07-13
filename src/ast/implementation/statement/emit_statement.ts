@@ -16,14 +16,10 @@ export class EmitStatement extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.vEventCall = eventCall;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vEventCall);
+        throw new Error("STUB");
     }
 }

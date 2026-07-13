@@ -9,10 +9,6 @@ export class ModernOverrideSpecifierProcessor extends ModernNodeProcessor<Overri
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof OverrideSpecifier> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const overrides = reader.convertArray(raw.overrides, config) as UserDefinedTypeName[];
-
-        return [id, src, overrides, raw];
+        throw new Error("STUB");
     }
 }

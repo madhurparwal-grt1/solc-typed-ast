@@ -10,13 +10,6 @@ export class LegacyWhileStatementProcessor extends LegacyNodeProcessor<WhileStat
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof WhileStatement> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const [condition, body] = reader.convertArray(raw.children, config) as [
-            Expression,
-            Statement
-        ];
-
-        return [id, src, condition, body, undefined, raw];
+        throw new Error("STUB");
     }
 }

@@ -9,16 +9,6 @@ export class LegacyFunctionCallOptionsProcessor extends LegacyExpressionProcesso
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof FunctionCallOptions> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const names: string[] = raw.attributes.names;
-        const [expression, ...values] = reader.convertArray(raw.children, config) as Expression[];
-        const options = new Map<string, Expression>();
-
-        for (let n = 0; n < names.length; n++) {
-            options.set(names[n], values[n]);
-        }
-
-        return [id, src, typeString, typeIdentifier, expression, options, raw];
+        throw new Error("STUB");
     }
 }

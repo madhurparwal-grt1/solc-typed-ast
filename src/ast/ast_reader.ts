@@ -55,26 +55,18 @@ export class ASTContext {
     map = new Map<number, ASTNode>();
 
     constructor(...nodes: ASTNode[]) {
-        this.register(...nodes);
+        throw new Error("STUB");
     }
 
     /**
      * Max ID of the registered nodes
      */
     get lastId(): number {
-        let last = 0;
-
-        for (const id of this.map.keys()) {
-            if (id > last) {
-                last = id;
-            }
-        }
-
-        return last;
+        throw new Error("STUB");
     }
 
     get nodes(): Iterable<ASTNode> {
-        return this.map.values();
+        throw new Error("STUB");
     }
 
     register(...nodes: ASTNode[]): void {
@@ -110,13 +102,7 @@ export class ASTContext {
     }
 
     require(id: number): ASTNode {
-        const node = this.locate(id);
-
-        if (node) {
-            return node;
-        }
-
-        throw new Error("Required node not found for id " + id);
+        throw new Error("STUB");
     }
 
     requireType<T extends ASTNode>(id: number, constr: ASTNodeConstructor<T>): T {
@@ -142,17 +128,11 @@ export class ASTPostprocessor {
     }
 
     getPostprocessorsForNode(node: ASTNode): Array<ASTNodePostprocessor<ASTNode>> {
-        return this.nodePostprocessors.filter((postprocessor) =>
-            postprocessor.isSupportedNode(node)
-        );
+        throw new Error("STUB");
     }
 
     processNode(node: ASTNode, context: ASTContext, sources?: FileMap): void {
-        const postprocessors = this.getPostprocessorsForNode(node);
-
-        for (const postprocessor of postprocessors) {
-            postprocessor.process(node, context, sources);
-        }
+        throw new Error("STUB");
     }
 
     processContext(context: ASTContext, sources?: FileMap): void {
@@ -270,16 +250,6 @@ export class ASTReader {
      * If input is not an array, then the empty array is returned.
      */
     convertArray(array: any, config: ASTReaderConfiguration): ASTNode[] {
-        const result: ASTNode[] = [];
-
-        if (array instanceof Array) {
-            for (const raw of array) {
-                const node = this.convert(raw, config);
-
-                result.push(node);
-            }
-        }
-
-        return result;
+        throw new Error("STUB");
     }
 }

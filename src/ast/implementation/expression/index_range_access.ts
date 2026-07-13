@@ -29,16 +29,10 @@ export class IndexRangeAccess extends Expression {
         endExpression?: Expression,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vBaseExpression = baseExpression;
-        this.vStartExpression = startExpression;
-        this.vEndExpression = endExpression;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vBaseExpression, this.vStartExpression, this.vEndExpression);
+        throw new Error("STUB");
     }
 }

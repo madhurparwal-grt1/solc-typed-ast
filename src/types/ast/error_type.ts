@@ -12,6 +12,6 @@ export class ErrorType extends FunctionLikeType {
     }
 
     pp(): string {
-        return `error ${this.name}(${this.parameters.map((t) => t.pp()).join(",")})`;
+        return `error ${this.name}(${this.parameters.map((t) => { throw new Error("STUB"); }).join(",")})`;
     }
 }

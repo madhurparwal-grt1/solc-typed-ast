@@ -23,15 +23,10 @@ export class ArrayTypeName extends TypeName {
         length?: Expression,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vBaseType = baseType;
-        this.vLength = length;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vBaseType, this.vLength);
+        throw new Error("STUB");
     }
 }

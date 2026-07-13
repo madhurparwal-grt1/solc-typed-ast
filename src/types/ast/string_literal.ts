@@ -13,7 +13,7 @@ export class StringLiteralType extends TypeNode {
     }
 
     get isHex(): boolean {
-        return this.kind === "hexString";
+        throw new Error("STUB");
     }
 
     pp(): string {

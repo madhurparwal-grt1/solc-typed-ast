@@ -9,12 +9,7 @@ export class ModernTupleExpressionProcessor extends ModernExpressionProcessor<Tu
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof TupleExpression> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const isInlineArray: boolean = raw.isInlineArray;
-        const components = this.extractComponents(raw.components, reader, config);
-
-        return [id, src, typeString, typeIdentifier, isInlineArray, components, raw];
+        throw new Error("STUB");
     }
 
     private extractComponents(
@@ -22,15 +17,6 @@ export class ModernTupleExpressionProcessor extends ModernExpressionProcessor<Tu
         reader: ASTReader,
         config: ASTReaderConfiguration
     ): Array<Expression | null> {
-        const nodes: Array<Expression | null> = [];
-
-        for (const component of components) {
-            const node =
-                component === null ? null : (reader.convert(component, config) as Expression);
-
-            nodes.push(node);
-        }
-
-        return nodes;
+        throw new Error("STUB");
     }
 }

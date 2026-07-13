@@ -46,11 +46,11 @@ export function resolve<T extends Resolvable>(
     let finder: (candidate: Resolvable) => boolean;
 
     if (target instanceof VariableDeclaration) {
-        finder = (candidate) => candidate.name === target.name;
+        finder = (candidate) => { throw new Error("STUB"); };
     } else {
         const hash = signatureHash(target);
 
-        finder = (candidate) => equalsBytes(hash, signatureHash(candidate));
+        finder = (candidate) => { throw new Error("STUB"); };
     }
 
     for (const base of scope.vLinearizedBaseContracts) {
@@ -90,66 +90,18 @@ export function resolveByName<T extends Resolvable>(
     name: string,
     onlyParents = false
 ): T[] {
-    const result = [];
-    const found = new Set<string>();
-
-    for (const base of scope.vLinearizedBaseContracts) {
-        if (onlyParents && base === scope) {
-            continue;
-        }
-
-        const collection = getResolvableCollection(base, constructor);
-
-        for (const resolvable of collection) {
-            /**
-             * We use `resolvableIdentifier` to avoid adding already-overloaded functions
-             * into the resolved set.
-             * (Its safe to assume ABIEncoderVersionV2 as its backwards
-             * compatible, and we only use it internally here.)
-             */
-            const resolvableIdentifier =
-                resolvable instanceof VariableDeclaration
-                    ? resolvable.name
-                    : bytesToHex(signatureHash(resolvable));
-
-            if (resolvable.name === name && !found.has(resolvableIdentifier)) {
-                result.push(resolvable as T);
-
-                found.add(resolvableIdentifier);
-            }
-        }
-    }
-
-    return result;
+    throw new Error("STUB");
 }
 
 function isExplicitlyBound(call: FunctionCall): boolean {
-    if (call.vExpression instanceof MemberAccess) {
-        const expression = call.vExpression.vExpression;
-
-        if (
-            expression instanceof Identifier &&
-            expression.vReferencedDeclaration instanceof ContractDefinition
-        ) {
-            return true;
-        }
-    }
-
-    return false;
+    throw new Error("STUB");
 }
 
 export function resolveEvent(
     scope: ContractDefinition,
     statement: EmitStatement
 ): EventDefinition | undefined {
-    const call = statement.vEventCall;
-    const definition = call.vReferencedDeclaration;
-
-    if (definition instanceof EventDefinition) {
-        return isExplicitlyBound(call) ? definition : resolve(scope, definition);
-    }
-
-    return undefined;
+    throw new Error("STUB");
 }
 
 export function resolveCallable(
@@ -157,27 +109,5 @@ export function resolveCallable(
     definition: FunctionDefinition | VariableDeclaration,
     onlyParents = false
 ): FunctionDefinition | VariableDeclaration | undefined {
-    const selector = signatureHash(definition);
-
-    for (const base of scope.vLinearizedBaseContracts) {
-        if (onlyParents && base === scope) {
-            continue;
-        }
-
-        for (const fn of base.vFunctions) {
-            if (equalsBytes(signatureHash(fn), selector)) {
-                return fn;
-            }
-        }
-
-        for (const v of base.vStateVariables) {
-            if (v.visibility === StateVariableVisibility.Public) {
-                if (equalsBytes(signatureHash(v), selector)) {
-                    return v;
-                }
-            }
-        }
-    }
-
-    return undefined;
+    throw new Error("STUB");
 }

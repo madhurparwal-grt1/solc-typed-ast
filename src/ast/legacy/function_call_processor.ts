@@ -10,32 +10,14 @@ export class LegacyFunctionCallProcessor extends LegacyExpressionProcessor<Funct
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof FunctionCall> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-
-        const kind = this.detectKind(attributes);
-        const fieldNames = this.detectFieldNames(attributes);
-
-        const [expression, ...args] = reader.convertArray(raw.children, config) as Expression[];
-
-        return [id, src, typeString, typeIdentifier, kind, expression, args, fieldNames, raw];
+        throw new Error("STUB");
     }
 
     private detectKind(attributes: any): FunctionCallKind {
-        if (attributes.type_conversion) {
-            return FunctionCallKind.TypeConversion;
-        }
-
-        if (attributes.isStructConstructorCall) {
-            return FunctionCallKind.StructConstructorCall;
-        }
-
-        return FunctionCallKind.FunctionCall;
+        throw new Error("STUB");
     }
 
     private detectFieldNames(attributes: any): string[] | undefined {
-        const names = attributes.names;
-
-        return names.length && !(names.length === 1 && names[0] === null) ? names : undefined;
+        throw new Error("STUB");
     }
 }

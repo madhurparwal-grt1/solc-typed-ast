@@ -23,31 +23,21 @@ export class Return extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.functionReturnParameters = functionReturnParameters;
-
-        this.vExpression = expression;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vExpression);
+        throw new Error("STUB");
     }
 
     /**
      * The parameter list that specifies the return parameters
      */
     get vFunctionReturnParameters(): ParameterList {
-        return this.requiredContext.locate(this.functionReturnParameters) as ParameterList;
+        throw new Error("STUB");
     }
 
     set vFunctionReturnParameters(value: ParameterList) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.functionReturnParameters = value.id;
+        throw new Error("STUB");
     }
 }

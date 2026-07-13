@@ -18,13 +18,13 @@ export class PragmaDirective extends ASTNode {
      * e.g. `experimental` or `solidity`.
      */
     get vIdentifier(): string {
-        return this.literals[0];
+        throw new Error("STUB");
     }
 
     /**
      * The rest of the literal elements, e.g. `[ "^", "0.4", ".15" ]`
      */
     get vValue(): string {
-        return this.literals.slice(1).join("");
+        throw new Error("STUB");
     }
 }

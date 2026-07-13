@@ -43,26 +43,17 @@ export class EventDefinition extends ASTNode {
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.anonymous = anonymous;
-        this.name = name;
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
-
-        this.vParameters = parameters;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vParameters);
+        throw new Error("STUB");
     }
 
     /**
      * Reference to its scoped contract
      */
     get vScope(): ContractDefinition {
-        return this.parent as ContractDefinition;
+        throw new Error("STUB");
     }
 }

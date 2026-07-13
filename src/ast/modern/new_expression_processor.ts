@@ -9,10 +9,6 @@ export class ModernNewExpressionProcessor extends ModernExpressionProcessor<NewE
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof NewExpression> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const typeName = reader.convert(raw.typeName, config) as TypeName;
-
-        return [id, src, typeString, typeIdentifier, typeName, raw];
+        throw new Error("STUB");
     }
 }

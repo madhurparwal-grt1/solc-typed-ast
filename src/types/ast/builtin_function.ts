@@ -19,7 +19,7 @@ export class BuiltinFunctionType extends FunctionLikeType {
     }
 
     pp(): string {
-        const mapper = (node: TypeNode) => node.pp();
+        const mapper = (node: TypeNode) => { throw new Error("STUB"); };
 
         const argStr = this.parameters.map(mapper).join(",");
 

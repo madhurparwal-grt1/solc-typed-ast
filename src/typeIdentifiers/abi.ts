@@ -112,19 +112,19 @@ export function toABIType(from: TypeIdentifier, ctx: ASTContext): TypeIdentifier
     // Structs are passed as tuples
     if (from instanceof StructTypeId) {
         const def = ctx.requireType(from.id, StructDefinition);
-        let fieldTs = def.vMembers.map((decl) => typeOf(decl));
+        let fieldTs = def.vMembers.map((decl) => { throw new Error("STUB"); });
         // Remove any mappings
-        fieldTs = fieldTs.filter((fieldT) => !(fieldT instanceof MappingTypeId));
+        fieldTs = fieldTs.filter((fieldT) => { throw new Error("STUB"); });
 
         // Convert the fields to ABI types and filter out any empty tuples.
         // Empty tuples can result if a field is a struct contains only mappings.
         // Also note that struct fields have "storage" as a default location.
         // Convert to Memory to avoid treating them as storage pointers.
         const abiFieldTs = fieldTs
-            .map((fieldT) => toABIType(changeLocationTo(fieldT, DataLocation.Memory), ctx))
+            .map((fieldT) => { throw new Error("STUB"); })
             .filter(
                 (abiFieldT) =>
-                    !(abiFieldT instanceof TupleTypeId && abiFieldT.components.length === 0)
+                    { throw new Error("STUB"); }
             );
 
         return new TupleTypeId(abiFieldTs);

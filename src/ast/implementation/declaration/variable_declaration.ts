@@ -112,44 +112,21 @@ export class VariableDeclaration extends ASTNode {
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.constant = constant;
-        this.indexed = indexed;
-        this.name = name;
-        this.scope = scope;
-        this.stateVariable = stateVariable;
-        this.storageLocation = storageLocation;
-        this.visibility = visibility;
-        this.mutability = mutability;
-        this.typeString = typeString;
-        this.typeIdentifier = typeIdentifier;
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
-
-        this.vType = typeName;
-        this.vOverrideSpecifier = overrideSpecifier;
-        this.vValue = value;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vType, this.vOverrideSpecifier, this.vValue);
+        throw new Error("STUB");
     }
 
     /**
      * Check type of scope as a VariableDeclaration can be in the scope of different declarations
      */
     get vScope(): ASTNode {
-        return this.requiredContext.locate(this.scope);
+        throw new Error("STUB");
     }
 
     set vScope(value: ASTNode) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.scope = value.id;
+        throw new Error("STUB");
     }
 }

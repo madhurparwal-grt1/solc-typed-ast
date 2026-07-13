@@ -101,26 +101,7 @@ export class ContractDefinition
         baseSlotExpression?: Expression,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.name = name;
-        this.scope = scope;
-        this.kind = kind;
-        this.abstract = abstract;
-        this.fullyImplemented = fullyImplemented;
-        this.linearizedBaseContracts = linearizedBaseContracts;
-        this.usedErrors = usedErrors;
-        this.usedEvents = usedEvents;
-        this.baseSlotExpression = baseSlotExpression;
-
-        if (children) {
-            for (const node of children) {
-                this.appendChild(node);
-            }
-        }
-
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
+        throw new Error("STUB");
     }
 
     /**
@@ -130,11 +111,11 @@ export class ContractDefinition
      * - Is instance of `StructuredDocumentation` when specified and compiler version is `0.6.3` or newer.
      */
     get documentation(): string | StructuredDocumentation | undefined {
-        return getDocumentation(this);
+        throw new Error("STUB");
     }
 
     set documentation(value: string | StructuredDocumentation | undefined) {
-        setDocumentation(this, value);
+        throw new Error("STUB");
     }
 
     /**
@@ -146,62 +127,50 @@ export class ContractDefinition
      * - Is type of `string` for compatibility reasons.
      */
     get danglingDocumentation(): string | StructuredDocumentation | undefined {
-        return getDanglingDocumentation(this);
+        throw new Error("STUB");
     }
 
     set danglingDocumentation(value: string | StructuredDocumentation | undefined) {
-        setDanglingDocumentation(this, value);
+        throw new Error("STUB");
     }
 
     /**
      * Reference to its scoped source unit
      */
     get vScope(): SourceUnit {
-        return this.requiredContext.locate(this.scope) as SourceUnit;
+        throw new Error("STUB");
     }
 
     set vScope(value: SourceUnit) {
-        if (!this.requiredContext.contains(value)) {
-            throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-        }
-
-        this.scope = value.id;
+        throw new Error("STUB");
     }
 
     /**
      * C3-linearized base contract references including the current contract
      */
     get vLinearizedBaseContracts(): readonly ContractDefinition[] {
-        const context = this.requiredContext;
-
-        return this.linearizedBaseContracts.map((id) => context.locate(id)) as ContractDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Used error definitions (including external definitions)
      */
     get vUsedErrors(): readonly ErrorDefinition[] {
-        const context = this.requiredContext;
-
-        return this.usedErrors.map((id) => context.locate(id)) as ErrorDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Used event definitions (including external definitions)
      */
     get vUsedEvents(): readonly EventDefinition[] {
-        const context = this.requiredContext;
-
-        return this.usedEvents.map((id) => context.locate(id)) as EventDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Inheritance specifiers
      */
     get vInheritanceSpecifiers(): readonly InheritanceSpecifier[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof InheritanceSpecifier
-        ) as InheritanceSpecifier[];
+        throw new Error("STUB");
     }
 
     /**
@@ -210,88 +179,70 @@ export class ContractDefinition
      * and that are direct children of a contract
      */
     get vStateVariables(): readonly VariableDeclaration[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof VariableDeclaration
-        ) as VariableDeclaration[];
+        throw new Error("STUB");
     }
 
     /**
      * Modifiers of the contract
      */
     get vModifiers(): readonly ModifierDefinition[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof ModifierDefinition
-        ) as ModifierDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Events of the contract
      */
     get vEvents(): readonly EventDefinition[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof EventDefinition
-        ) as EventDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Errors of the contract
      */
     get vErrors(): readonly ErrorDefinition[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof ErrorDefinition
-        ) as ErrorDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Functions of the contract
      */
     get vFunctions(): readonly FunctionDefinition[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof FunctionDefinition
-        ) as FunctionDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Type-bound libraries directives of the contract
      */
     get vUsingForDirectives(): readonly UsingForDirective[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof UsingForDirective
-        ) as UsingForDirective[];
+        throw new Error("STUB");
     }
 
     /**
      * Structs of the contract
      */
     get vStructs(): readonly StructDefinition[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof StructDefinition
-        ) as StructDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Enums of the contract
      */
     get vEnums(): readonly EnumDefinition[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof EnumDefinition
-        ) as EnumDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * User-defined value type definitions of contract
      */
     get vUserDefinedValueTypes(): readonly UserDefinedValueTypeDefinition[] {
-        return this.ownChildren.filter(
-            (node) => node instanceof UserDefinedValueTypeDefinition
-        ) as UserDefinedValueTypeDefinition[];
+        throw new Error("STUB");
     }
 
     /**
      * Constructor reference (if definition is present for this contract)
      */
     get vConstructor(): FunctionDefinition | undefined {
-        return this.vFunctions.find((fn) => fn.isConstructor);
+        throw new Error("STUB");
     }
 
     /**

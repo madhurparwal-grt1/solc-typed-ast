@@ -34,31 +34,5 @@ export function strUTF8Len(s: string): number {
  * string.
  */
 export function strUTF16IndexToUTF8Offset(s: string, idx: number): number {
-    let i = 0,
-        off = 0;
-
-    for (const ch of s) {
-        if (i === idx) {
-            return off;
-        }
-
-        const charBytes = utf8Enc.encodeInto(ch, scratch).written;
-
-        i += charBytes <= 2 ? 1 : 2;
-        off += charBytes;
-
-        if (i === idx) {
-            return off;
-        }
-
-        if (i >= idx) {
-            throw new Error(`No unicode character index ${idx} in string ${s}.`);
-        }
-    }
-
-    if (i === idx) {
-        return off;
-    }
-
-    throw new Error(`No unicode character index ${idx} in string ${s}.`);
+    throw new Error("STUB");
 }

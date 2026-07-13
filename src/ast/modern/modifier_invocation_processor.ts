@@ -11,15 +11,6 @@ export class ModernModifierInvocationProcessor extends ModernNodeProcessor<Modif
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ModifierInvocation> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const kind: ModifierInvocationKind | undefined = raw.kind;
-
-        const modifierName = reader.convert(raw.modifierName, config) as Identifier;
-        const args = raw.arguments
-            ? (reader.convertArray(raw.arguments, config) as Expression[])
-            : [];
-
-        return [id, src, modifierName, args, kind, raw];
+        throw new Error("STUB");
     }
 }

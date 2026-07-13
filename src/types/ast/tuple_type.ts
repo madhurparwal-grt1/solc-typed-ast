@@ -12,10 +12,10 @@ export class TupleType extends TypeNode {
     }
 
     getChildren(): Node[] {
-        return this.elements.filter((e) => e !== null) as Node[];
+        return this.elements.filter((e) => { throw new Error("STUB"); }) as Node[];
     }
 
     pp(): string {
-        return `tuple(${this.elements.map((element) => (element ? element.pp() : "")).join(",")})`;
+        return `tuple(${this.elements.map((element) => { throw new Error("STUB"); }).join(",")})`;
     }
 }

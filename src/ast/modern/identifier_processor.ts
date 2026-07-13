@@ -8,11 +8,6 @@ export class ModernIdentifierProcessor extends ModernExpressionProcessor<Identif
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Identifier> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const name: string = raw.name;
-        const referencedDeclaration: number = raw.referencedDeclaration;
-
-        return [id, src, typeString, typeIdentifier, name, referencedDeclaration, raw];
+        throw new Error("STUB");
     }
 }

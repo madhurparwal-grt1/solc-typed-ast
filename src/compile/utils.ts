@@ -69,15 +69,7 @@ export class CompileFailedError extends Error {
     failures: CompileFailure[];
 
     constructor(entries: CompileFailure[]) {
-        super();
-
-        this.failures = entries;
-
-        const formattedErrorStr = entries.map(
-            (entry) => `==== ${entry.compilerVersion} ====:\n ${entry.errors.join("\n")}\n`
-        );
-
-        this.message = `Compiler Errors: ${formattedErrorStr}`;
+        throw new Error("STUB");
     }
 }
 
@@ -88,7 +80,7 @@ function consistentlyContainsOneOf(
     const sections = Object.values(sources);
 
     for (const property of properties) {
-        if (sections.every((section) => property in section)) {
+        if (sections.every((section) => { throw new Error("STUB"); })) {
             return true;
         }
     }
@@ -99,13 +91,7 @@ function consistentlyContainsOneOf(
 export function parsePathRemapping(remapping: string[]): Remapping[] {
     const rxRemapping = /^(([^:]*):)?([^=]*)=(.+)$/;
     const result: Array<[string, string, string]> = remapping.map((entry) => {
-        const matches = entry.match(rxRemapping);
-
-        if (matches === null) {
-            throw new Error(`Invalid remapping entry "${entry}"`);
-        }
-
-        return [matches[2] === undefined ? "" : matches[2], matches[3], matches[4]];
+        throw new Error("STUB");
     });
 
     return result;
@@ -363,7 +349,7 @@ export async function compileJsonData(
     }
 
     const sources: { [fileName: string]: any } = data.sources;
-    const resolvedFileNames = new Map<string, string>(Object.keys(sources).map((x) => [x, x]));
+    const resolvedFileNames = new Map<string, string>(Object.keys(sources).map((x) => { throw new Error("STUB"); }));
 
     if (consistentlyContainsOneOf(sources, "ast", "legacyAST", "AST")) {
         const compilerVersion = undefined;

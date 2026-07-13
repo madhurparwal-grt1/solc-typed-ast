@@ -34,18 +34,11 @@ export class ModifierInvocation extends ASTNode {
         kind?: ModifierInvocationKind,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.kind = kind;
-
-        this.vModifierName = modifierName;
-        this.vArguments = args;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vModifierName, this.vArguments);
+        throw new Error("STUB");
     }
 
     /**
@@ -56,6 +49,6 @@ export class ModifierInvocation extends ASTNode {
      * The `ContractDefinition` of a super contract is the value in such case.
      */
     get vModifier(): ModifierDefinition | ContractDefinition {
-        return this.vModifierName.vReferencedDeclaration as ModifierDefinition | ContractDefinition;
+        throw new Error("STUB");
     }
 }

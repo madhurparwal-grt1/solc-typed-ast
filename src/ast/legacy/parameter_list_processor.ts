@@ -9,10 +9,6 @@ export class LegacyParameterListProcessor extends LegacyNodeProcessor<ParameterL
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ParameterList> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const parameters = reader.convertArray(raw.children, config) as VariableDeclaration[];
-
-        return [id, src, parameters, raw];
+        throw new Error("STUB");
     }
 }

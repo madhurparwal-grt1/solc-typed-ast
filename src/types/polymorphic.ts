@@ -102,7 +102,7 @@ export function buildSubstituion(
 
     if (a instanceof TupleType && b instanceof TupleType) {
         assert(
-            forAll(a.elements, (el) => el !== null) && forAll(b.elements, (el) => el !== null),
+            forAll(a.elements, (el) => { throw new Error("STUB"); }) && forAll(b.elements, (el) => { throw new Error("STUB"); }),
             `Unexpected tuple with empty elements when building type substitution: {0} or {1}`,
             a,
             b
@@ -260,7 +260,7 @@ export function applySubstitution(a: TypeNode, m: TypeSubstituion): TypeNode {
 
     if (a instanceof TupleType) {
         assert(
-            forAll(a.elements, (el) => el !== null),
+            forAll(a.elements, (el) => { throw new Error("STUB"); }),
             "Unexpected tuple with empty elements when applying type substitution: {0}",
             a
         );
@@ -278,10 +278,7 @@ export function applySubstitution(a: TypeNode, m: TypeSubstituion): TypeNode {
         return new BuiltinStructType(
             a.name,
             new Map(
-                oldMembers.map(([name, verDepTypes]) => [
-                    name,
-                    verDepTypes.map(([type, ver]) => [applySubstitution(type, m), ver])
-                ])
+                oldMembers.map(([name, verDepTypes]) => { throw new Error("STUB"); })
             )
         );
     }

@@ -22,15 +22,10 @@ export class Mapping extends TypeName {
         valueType: TypeName,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vKeyType = keyType;
-        this.vValueType = valueType;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vKeyType, this.vValueType);
+        throw new Error("STUB");
     }
 }

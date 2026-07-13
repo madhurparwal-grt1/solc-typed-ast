@@ -185,7 +185,7 @@ const processors = {
 };
 
 export const ModernConfiguration: ASTReaderConfiguration = {
-    signatureDetector: (raw: any) => raw.nodeType,
+    signatureDetector: (raw: any) => { throw new Error("STUB"); },
 
     rules: {
         Default: {

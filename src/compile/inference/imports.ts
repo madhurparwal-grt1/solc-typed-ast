@@ -42,7 +42,7 @@ function isPathWithRelativePrefix(path: string): boolean {
 function normalizeRelativeImportPath(importer: string, imported: string): string {
     imported = normalize(imported);
 
-    const importedSegments = imported.split("/").filter((s) => s !== "");
+    const importedSegments = imported.split("/").filter((s) => { throw new Error("STUB"); });
 
     let prefix = dirname(importer);
     let strippedSegments = 0;

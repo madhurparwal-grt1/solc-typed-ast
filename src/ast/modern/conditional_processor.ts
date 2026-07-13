@@ -9,21 +9,6 @@ export class ModernConditionalProcessor extends ModernExpressionProcessor<Condit
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Conditional> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const condition = reader.convert(raw.condition, config) as Expression;
-        const trueExpression = reader.convert(raw.trueExpression, config) as Expression;
-        const falseExpression = reader.convert(raw.falseExpression, config) as Expression;
-
-        return [
-            id,
-            src,
-            typeString,
-            typeIdentifier,
-            condition,
-            trueExpression,
-            falseExpression,
-            raw
-        ];
+        throw new Error("STUB");
     }
 }

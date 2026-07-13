@@ -41,39 +41,10 @@ export class UsingForDirective extends ASTNode {
         typeName?: TypeName,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        if (libraryName) {
-            this.vLibraryName = libraryName;
-        } else if (functionList) {
-            this.vFunctionList = functionList;
-        } else {
-            throw new Error("One of vLibraryName or vFunctionList should always be set");
-        }
-
-        this.vTypeName = typeName;
-        this.isGlobal = isGlobal;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        const result = [];
-
-        if (this.vLibraryName) {
-            result.push(this.vLibraryName);
-        }
-
-        if (this.vFunctionList) {
-            for (const entry of this.vFunctionList) {
-                result.push(entry instanceof IdentifierPath ? entry : entry.definition);
-            }
-        }
-
-        if (this.vTypeName) {
-            result.push(this.vTypeName);
-        }
-
-        return result;
+        throw new Error("STUB");
     }
 }

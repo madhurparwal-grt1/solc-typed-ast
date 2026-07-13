@@ -9,12 +9,6 @@ export class ModernExpressionStatementProcessor extends ModernNodeProcessor<Expr
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ExpressionStatement> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const documentation: string | undefined = raw.documentation;
-
-        const expression = reader.convert(raw.expression, config) as Expression;
-
-        return [id, src, expression, documentation, raw];
+        throw new Error("STUB");
     }
 }

@@ -12,7 +12,7 @@ class YulBlockWriter implements YulNodeWriter {
         formatter.increaseNesting();
 
         const statements = node.statements.map(
-            (stmt: YulNode) => formatter.renderIndent() + writer.write(stmt)
+            (stmt: YulNode) => { throw new Error("STUB"); }
         );
 
         formatter.decreaseNesting();
@@ -59,7 +59,7 @@ class YulTypedNameWriter implements YulNodeWriter {
 class YulFunctionCallWriter implements YulNodeWriter {
     write(node: YulNode, writer: YulWriter): string {
         const id = writer.write(node.functionName);
-        const args = node.arguments.map((arg: YulNode) => writer.write(arg));
+        const args = node.arguments.map((arg: YulNode) => { throw new Error("STUB"); });
 
         return id + "(" + args.join(", ") + ")";
     }
@@ -67,7 +67,7 @@ class YulFunctionCallWriter implements YulNodeWriter {
 
 class YulVariableDeclarationWriter implements YulNodeWriter {
     write(node: YulNode, writer: YulWriter): string {
-        const vars = node.variables.map((v: YulNode) => writer.write(v));
+        const vars = node.variables.map((v: YulNode) => { throw new Error("STUB"); });
         const rhs =
             node.value === undefined || node.value === null ? undefined : writer.write(node.value);
         const lhs = "let " + vars.join(", ");
@@ -84,7 +84,7 @@ class YulExpressionStatementWriter implements YulNodeWriter {
 
 class YulAssignmentWriter implements YulNodeWriter {
     write(node: YulNode, writer: YulWriter): string {
-        const lhs = node.variableNames.map((v: YulNode) => writer.write(v));
+        const lhs = node.variableNames.map((v: YulNode) => { throw new Error("STUB"); });
         const rhs = writer.write(node.value);
 
         return lhs.join(", ") + " := " + rhs;
@@ -121,7 +121,7 @@ class YulSwitchWriter implements YulNodeWriter {
         const formatter = writer.formatter;
 
         const cases = node.cases.map(
-            (clause: YulNode) => formatter.renderIndent() + writer.write(clause)
+            (clause: YulNode) => { throw new Error("STUB"); }
         );
 
         const wrap = formatter.renderWrap();
@@ -162,11 +162,11 @@ class YulForLoopWriter implements YulNodeWriter {
 class YulFunctionDefinitionWriter implements YulNodeWriter {
     write(node: YulNode, writer: YulWriter): string {
         const args = node.parameters
-            ? node.parameters.map((arg: any) => writer.write(arg))
+            ? node.parameters.map((arg: any) => { throw new Error("STUB"); })
             : undefined;
 
         const rets = node.returnVariables
-            ? node.returnVariables.map((v: any) => writer.write(v))
+            ? node.returnVariables.map((v: any) => { throw new Error("STUB"); })
             : undefined;
 
         const body = writer.write(node.body);

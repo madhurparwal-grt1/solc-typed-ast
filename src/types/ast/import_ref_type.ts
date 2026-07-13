@@ -10,15 +10,7 @@ export class ImportRefType extends TypeNode {
     readonly importStmt: ImportDirective;
 
     constructor(importStmt: ImportDirective, src?: Range) {
-        super(src);
-
-        assert(
-            importStmt.vSymbolAliases.length === 0 && importStmt.unitAlias !== "",
-            "ImportRefTypes only applicable to unit alias imports, not {0}",
-            importStmt
-        );
-
-        this.importStmt = importStmt;
+        throw new Error("STUB");
     }
 
     getFields(): any[] {

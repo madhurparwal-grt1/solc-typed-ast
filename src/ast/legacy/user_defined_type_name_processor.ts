@@ -8,12 +8,6 @@ export class LegacyUserDefinedTypeNameProcessor extends LegacyTypeNameProcessor<
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof UserDefinedTypeName> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-
-        const name: string = attributes.name;
-        const referencedDeclaration: number = attributes.referencedDeclaration;
-
-        return [id, src, typeString, typeIdentifier, name, referencedDeclaration, undefined, raw];
+        throw new Error("STUB");
     }
 }

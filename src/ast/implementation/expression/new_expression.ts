@@ -16,14 +16,10 @@ export class NewExpression extends Expression {
         typeName: TypeName,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.vTypeName = typeName;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vTypeName);
+        throw new Error("STUB");
     }
 }

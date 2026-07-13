@@ -49,53 +49,35 @@ export class ASTNode {
     }
 
     protected pickNodes(...args: Array<any | Iterable<any>>): ASTNode[] {
-        const result: ASTNode[] = [];
-
-        for (const arg of args) {
-            if (arg instanceof ASTNode) {
-                result.push(arg);
-            } else if (arg === null || arg === undefined || typeof arg === "string") {
-                continue;
-            } else if (typeof arg[Symbol.iterator] === "function") {
-                result.push(...this.pickNodes(...arg));
-            }
-        }
-
-        return result;
+        throw new Error("STUB");
     }
 
     /**
      * Sets `parent` to the current node for each of the accessible children node.
      */
     acceptChildren(): void {
-        for (const node of this.children) {
-            node.parent = this;
-        }
+        throw new Error("STUB");
     }
 
     /**
      * Type of the AST node
      */
     get type(): string {
-        return this.constructor.name;
+        throw new Error("STUB");
     }
 
     /**
      * Returns current node AST context. Throws an error if no context is set.
      */
     get requiredContext(): ASTContext {
-        if (this.context) {
-            return this.context;
-        }
-
-        throw new Error("AST context is not set");
+        throw new Error("STUB");
     }
 
     /**
      * Returns children nodes of the current node
      */
     get children(): readonly ASTNode[] {
-        return this.pickNodes();
+        throw new Error("STUB");
     }
 
     /**
@@ -103,7 +85,7 @@ export class ASTNode {
      * or `undefined` if the node has no children.
      */
     get firstChild(): ASTNode | undefined {
-        return this.children[0];
+        throw new Error("STUB");
     }
 
     /**
@@ -111,7 +93,7 @@ export class ASTNode {
      * or `undefined` if the node has no children.
      */
     get lastChild(): ASTNode | undefined {
-        return this.children[this.children.length - 1];
+        throw new Error("STUB");
     }
 
     /**
@@ -122,14 +104,7 @@ export class ASTNode {
      * in its `parent`'s children.
      */
     get previousSibling(): ASTNode | undefined {
-        if (this.parent === undefined) {
-            return undefined;
-        }
-
-        const nodes = this.parent.children;
-        const index = nodes.indexOf(this);
-
-        return nodes[index - 1];
+        throw new Error("STUB");
     }
 
     /**
@@ -140,34 +115,21 @@ export class ASTNode {
      * in its `parent`'s children.
      */
     get nextSibling(): ASTNode | undefined {
-        if (this.parent === undefined) {
-            return undefined;
-        }
-
-        const nodes = this.parent.children;
-        const index = nodes.indexOf(this);
-
-        return nodes[index + 1];
+        throw new Error("STUB");
     }
 
     /**
      * Returns most parent node in tree hierarchy
      */
     get root(): ASTNode {
-        let node: ASTNode = this;
-
-        while (node.parent) {
-            node = node.parent;
-        }
-
-        return node;
+        throw new Error("STUB");
     }
 
     /**
      * Returns parsed parts of the `src` property value
      */
     get sourceInfo(): SourceLocation {
-        return parseSourceLocation(this.src);
+        throw new Error("STUB");
     }
 
     walk(callback: ASTNodeCallback): void {
@@ -227,18 +189,18 @@ export class ASTNode {
     }
 
     getChildrenByType<T extends ASTNode>(type: ASTNodeConstructor<T>, inclusive = false): T[] {
-        return this.getChildrenBySelector((node) => node instanceof type, inclusive);
+        return this.getChildrenBySelector((node) => { throw new Error("STUB"); }, inclusive);
     }
 
     getChildrenByTypeString<T extends ASTNode>(typeString: string, inclusive = false): T[] {
-        return this.getChildrenBySelector((node) => node.type === typeString, inclusive);
+        throw new Error("STUB");
     }
 
     getParents(): ASTNode[] {
         const nodes: ASTNode[] = [];
 
         this.walkParents((node) => {
-            nodes.push(node);
+            throw new Error("STUB");
         });
 
         return nodes;
@@ -259,24 +221,15 @@ export class ASTNode {
     }
 
     getClosestParentByType<T extends ASTNode>(type: ASTNodeConstructor<T>): T | undefined {
-        return this.getClosestParentBySelector((node) => node instanceof type);
+        return this.getClosestParentBySelector((node) => { throw new Error("STUB"); });
     }
 
     getClosestParentByTypeString<T extends ASTNode>(typeString: string): T | undefined {
-        return this.getClosestParentBySelector((node) => node.type === typeString);
+        throw new Error("STUB");
     }
 
     getParentsBySelector<T extends ASTNode>(selector: ASTNodeSelector): T[] {
-        const nodes: T[] = [];
-        const callback: ASTNodeCallback = (node) => {
-            if (selector(node as T)) {
-                nodes.push(node as T);
-            }
-        };
-
-        this.walkParents(callback);
-
-        return nodes;
+        throw new Error("STUB");
     }
 
     /**
@@ -329,9 +282,7 @@ export class ASTNode {
      * In other words, returns corresponding code fragment substring.
      */
     extractSourceFragment(source: Uint8Array): Uint8Array {
-        const { offset, length } = this.sourceInfo;
-
-        return source.slice(offset, offset + length);
+        throw new Error("STUB");
     }
 
     private createWalker(callback: ASTNodeCallback): ASTNodeCallback {
@@ -351,74 +302,31 @@ export class ASTNodeWithChildren<T extends ASTNode> extends ASTNode {
     protected ownChildren: T[] = [];
 
     get children(): readonly T[] {
-        return this.ownChildren;
+        throw new Error("STUB");
     }
 
     removeChild(node: T): T {
-        const index = this.ownChildren.indexOf(node);
-
-        if (index === -1) {
-            throw new Error("Reference node is not a child of current node");
-        }
-
-        this.ownChildren.splice(index, 1);
-
-        node.parent = undefined;
-
-        return node;
+        throw new Error("STUB");
     }
 
     appendChild(node: T): T {
-        this.ownChildren.push(node);
-
-        node.parent = this;
-
-        return node;
+        throw new Error("STUB");
     }
 
     insertBefore(node: T, referenceNode: T): T {
-        const index = this.ownChildren.indexOf(referenceNode);
-
-        if (index === -1) {
-            throw new Error("Reference node is not a child of current node");
-        }
-
-        this.ownChildren.splice(index, 0, node);
-
-        node.parent = this;
-
-        return node;
+        throw new Error("STUB");
     }
 
     insertAfter(node: T, referenceNode: T): T {
-        if (this.ownChildren.indexOf(referenceNode) === -1) {
-            throw new Error("Reference node is not a child of current node");
-        }
-
-        const sibling = referenceNode.nextSibling as T | undefined;
-
-        return sibling ? this.insertBefore(node, sibling) : this.appendChild(node);
+        throw new Error("STUB");
     }
 
     insertAtBeginning(node: T): T {
-        const firstChild = this.firstChild as T | undefined;
-
-        return firstChild ? this.insertBefore(node, firstChild) : this.appendChild(node);
+        throw new Error("STUB");
     }
 
     replaceChild(newNode: T, oldNode: T): T {
-        const index = this.ownChildren.indexOf(oldNode);
-
-        if (index === -1) {
-            throw new Error("Old node is not a child of current node");
-        }
-
-        this.ownChildren.splice(index, 1, newNode);
-
-        newNode.parent = this;
-        oldNode.parent = undefined;
-
-        return oldNode;
+        throw new Error("STUB");
     }
 }
 
@@ -439,65 +347,5 @@ export type ASTNodeConstructor<T extends ASTNode> = new (
  * there is nothing further to do.
  */
 export function replaceNode(oldNode: ASTNode, newNode: ASTNode): void {
-    if (oldNode.context !== newNode.context) {
-        throw new Error("Context mismatch");
-    }
-
-    const parent = oldNode.parent;
-
-    if (parent === undefined) {
-        return;
-    }
-
-    const ownProps = Object.getOwnPropertyDescriptors(parent);
-
-    for (const name in ownProps) {
-        const val = ownProps[name].value;
-
-        if (val === oldNode) {
-            const tmpObj: any = {};
-
-            tmpObj[name] = newNode;
-
-            Object.assign(parent, tmpObj);
-
-            oldNode.parent = undefined;
-
-            parent.acceptChildren();
-
-            return;
-        }
-
-        if (val instanceof Array) {
-            for (let i = 0; i < val.length; i++) {
-                if (val[i] === oldNode) {
-                    val[i] = newNode;
-
-                    oldNode.parent = undefined;
-
-                    parent.acceptChildren();
-
-                    return;
-                }
-            }
-        }
-
-        if (val instanceof Map) {
-            for (const [k, v] of val.entries()) {
-                if (v === oldNode) {
-                    val.set(k, newNode);
-
-                    oldNode.parent = undefined;
-
-                    parent.acceptChildren();
-
-                    return;
-                }
-            }
-        }
-    }
-
-    throw new Error(
-        `Couldn't find child ${oldNode.type}#${oldNode.id} under parent ${parent.type}#${parent.id}`
-    );
+    throw new Error("STUB");
 }

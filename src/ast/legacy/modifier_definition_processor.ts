@@ -13,38 +13,7 @@ export class LegacyModifierDefinitionProcessor extends LegacyNodeProcessor<Modif
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ModifierDefinition> {
-        const [id, src] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-        const children = reader.convertArray(raw.children, config);
-
-        const name: string = attributes.name;
-        const visibility: string = attributes.visibility;
-        const virtual: boolean = "virtual" in attributes ? attributes.virtual : false;
-
-        const [structuredDocumentation, overrideSpecifier, parameters, body] =
-            this.extract(children);
-
-        let documentation: string | StructuredDocumentation | undefined;
-
-        if (structuredDocumentation) {
-            documentation = structuredDocumentation;
-        } else if (typeof attributes.documentation === "string") {
-            documentation = attributes.documentation;
-        }
-
-        return [
-            id,
-            src,
-            name,
-            virtual,
-            visibility,
-            parameters,
-            overrideSpecifier,
-            body,
-            documentation,
-            undefined,
-            raw
-        ];
+        throw new Error("STUB");
     }
 
     private extract(
@@ -55,30 +24,6 @@ export class LegacyModifierDefinitionProcessor extends LegacyNodeProcessor<Modif
         ParameterList,
         Block | undefined
     ] {
-        let node = children.shift();
-
-        let documentation: StructuredDocumentation | undefined;
-
-        if (node instanceof StructuredDocumentation) {
-            documentation = node;
-
-            node = children.shift();
-        }
-
-        const parameters = node as ParameterList;
-
-        node = children.shift();
-
-        let overrideSpecifier: OverrideSpecifier | undefined;
-
-        if (node instanceof OverrideSpecifier) {
-            overrideSpecifier = node;
-
-            node = children.shift();
-        }
-
-        const body = node as Block | undefined;
-
-        return [documentation, overrideSpecifier, parameters, body];
+        throw new Error("STUB");
     }
 }

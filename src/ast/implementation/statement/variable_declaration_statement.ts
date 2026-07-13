@@ -31,16 +31,10 @@ export class VariableDeclarationStatement extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.assignments = assignments;
-        this.vDeclarations = declarations;
-        this.vInitialValue = initialValue;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vDeclarations, this.vInitialValue);
+        throw new Error("STUB");
     }
 }

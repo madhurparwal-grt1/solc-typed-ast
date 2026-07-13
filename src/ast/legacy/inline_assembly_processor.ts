@@ -8,18 +8,6 @@ export class LegacyInlineAssemblyProcessor extends LegacyNodeProcessor<InlineAss
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof InlineAssembly> {
-        const [id, src] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-
-        const externalReferences: any[] = attributes.externalReferences;
-        const operations: string | undefined = attributes.operations;
-
-        /**
-         * Yul AST is absent in Solidity legacy AST.
-         * It is presented as code string in `operations` attribute instead.
-         */
-        const yul = undefined;
-
-        return [id, src, externalReferences, operations, yul, undefined, undefined, undefined, raw];
+        throw new Error("STUB");
     }
 }

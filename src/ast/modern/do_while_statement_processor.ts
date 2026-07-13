@@ -10,13 +10,6 @@ export class ModernDoWhileStatementProcessor extends ModernNodeProcessor<DoWhile
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof DoWhileStatement> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const documentation: string | undefined = raw.documentation;
-
-        const condition = reader.convert(raw.condition, config) as Expression;
-        const body = reader.convert(raw.body, config) as Statement;
-
-        return [id, src, condition, body, documentation, raw];
+        throw new Error("STUB");
     }
 }

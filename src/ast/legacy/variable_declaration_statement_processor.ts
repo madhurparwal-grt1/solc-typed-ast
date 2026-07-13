@@ -10,17 +10,6 @@ export class LegacyVariableDeclarationStatementProcessor extends LegacyNodeProce
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof VariableDeclarationStatement> {
-        const [id, src] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-        const children = reader.convertArray(raw.children, config);
-
-        const assignments: Array<number | null> = attributes.assignments;
-
-        const initialValue =
-            attributes.initialValue === null ? undefined : (children.pop() as Expression);
-
-        const declarations = children as VariableDeclaration[];
-
-        return [id, src, assignments, declarations, initialValue, undefined, raw];
+        throw new Error("STUB");
     }
 }

@@ -10,41 +10,10 @@ export class LegacyFunctionTypeNameProcessor extends LegacyTypeNameProcessor<Fun
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof FunctionTypeName> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-
-        const visibility: FunctionVisibility = attributes.visibility;
-        const stateMutability = this.detectStateMutability(attributes);
-
-        const [parameterTypes, returnParameterTypes] = reader.convertArray(
-            raw.children,
-            config
-        ) as [ParameterList, ParameterList];
-
-        return [
-            id,
-            src,
-            typeString,
-            typeIdentifier,
-            visibility,
-            stateMutability,
-            parameterTypes,
-            returnParameterTypes,
-            raw
-        ];
+        throw new Error("STUB");
     }
 
     private detectStateMutability(attributes: any): FunctionStateMutability {
-        if (attributes.stateMutability) {
-            return attributes.stateMutability;
-        }
-
-        if (attributes.constant) {
-            return FunctionStateMutability.Constant;
-        }
-
-        return attributes.payable
-            ? FunctionStateMutability.Payable
-            : FunctionStateMutability.NonPayable;
+        throw new Error("STUB");
     }
 }

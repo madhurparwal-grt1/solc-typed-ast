@@ -65,34 +65,17 @@ export class ModifierDefinition extends ASTNode {
         nameLocation?: string,
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.name = name;
-        this.virtual = virtual;
-        this.visibility = visibility;
-        this.documentation = documentation;
-        this.nameLocation = nameLocation;
-
-        this.vParameters = parameters;
-        this.vOverrideSpecifier = overrideSpecifier;
-        this.vBody = body;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(
-            this.documentation,
-            this.vParameters,
-            this.vOverrideSpecifier,
-            this.vBody
-        );
+        throw new Error("STUB");
     }
 
     /**
      * Reference to its scoped contract
      */
     get vScope(): ContractDefinition {
-        return this.parent as ContractDefinition;
+        throw new Error("STUB");
     }
 }

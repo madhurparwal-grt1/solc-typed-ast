@@ -15,53 +15,6 @@ export class ModernFunctionDefinitionProcessor extends ModernNodeProcessor<Funct
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof FunctionDefinition> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const scope: number = raw.scope;
-        const kind: FunctionKind = detectFunctionKind(raw);
-        const isConstructor: boolean = raw.isConstructor || raw.kind === FunctionKind.Constructor;
-        const visibility: FunctionVisibility = raw.visibility;
-        const virtual: boolean = "virtual" in raw ? raw.virtual : false;
-        const name: string = raw.name;
-        const stateMutability: FunctionStateMutability = raw.stateMutability;
-        const nameLocation: string | undefined = raw.nameLocation;
-
-        let documentation: string | StructuredDocumentation | undefined;
-
-        if (raw.documentation) {
-            documentation =
-                typeof raw.documentation === "string"
-                    ? raw.documentation
-                    : reader.convert(raw.documentation, config);
-        }
-
-        const overrideSpecifier = raw.overrides
-            ? (reader.convert(raw.overrides, config) as OverrideSpecifier)
-            : undefined;
-
-        const parameters = reader.convert(raw.parameters, config) as ParameterList;
-        const returnParameters = reader.convert(raw.returnParameters, config) as ParameterList;
-        const modifiers = reader.convertArray(raw.modifiers, config) as ModifierInvocation[];
-        const body = raw.body ? (reader.convert(raw.body, config) as Block) : undefined;
-
-        return [
-            id,
-            src,
-            scope,
-            kind,
-            name,
-            virtual,
-            visibility,
-            stateMutability,
-            isConstructor,
-            parameters,
-            returnParameters,
-            modifiers,
-            overrideSpecifier,
-            body,
-            documentation,
-            nameLocation,
-            raw
-        ];
+        throw new Error("STUB");
     }
 }

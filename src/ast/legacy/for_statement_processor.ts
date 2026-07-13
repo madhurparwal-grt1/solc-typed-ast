@@ -12,25 +12,6 @@ export class LegacyForStatementProcessor extends LegacyNodeProcessor<ForStatemen
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ForStatement> {
-        const [id, src] = super.process(reader, config, raw);
-        const attributes = raw.attributes || {};
-        const children = reader.convertArray(raw.children, config);
-
-        const initializationExpression =
-            attributes.initializationExpression === null
-                ? undefined
-                : (children.shift() as VariableDeclarationStatement);
-
-        const condition =
-            attributes.condition === null ? undefined : (children.shift() as Expression);
-
-        const loopExpression =
-            attributes.loopExpression === null
-                ? undefined
-                : (children.shift() as ExpressionStatement);
-
-        const body = children.shift() as Statement;
-
-        return [id, src, body, initializationExpression, condition, loopExpression, undefined, raw];
+        throw new Error("STUB");
     }
 }

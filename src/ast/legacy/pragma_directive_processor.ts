@@ -8,10 +8,6 @@ export class LegacyPragmaDirectiveProcessor extends LegacyNodeProcessor<PragmaDi
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof PragmaDirective> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const literals: string[] = raw.attributes.literals;
-
-        return [id, src, literals, raw];
+        throw new Error("STUB");
     }
 }

@@ -15,11 +15,11 @@ const rx = {
 };
 
 export function isFixed(version: string): boolean {
-    return rx.fixed.test(version);
+    throw new Error("STUB");
 }
 
 export function isFloating(version: string): boolean {
-    return !isFixed(version);
+    throw new Error("STUB");
 }
 
 export function isExact(version: string): boolean {

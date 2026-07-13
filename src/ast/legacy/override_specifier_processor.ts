@@ -9,11 +9,6 @@ export class LegacyOverrideSpecifierProcessor extends LegacyNodeProcessor<Overri
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof OverrideSpecifier> {
-        const [id, src] = super.process(reader, config, raw);
-        const children = raw.children ? reader.convertArray(raw.children, config) : undefined;
-
-        const overrides = children ? (children as UserDefinedTypeName[]) : [];
-
-        return [id, src, overrides, raw];
+        throw new Error("STUB");
     }
 }

@@ -28,16 +28,10 @@ export class IfStatement extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.vCondition = condition;
-        this.vTrueBody = trueBody;
-        this.vFalseBody = falseBody;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vCondition, this.vTrueBody, this.vFalseBody);
+        throw new Error("STUB");
     }
 }

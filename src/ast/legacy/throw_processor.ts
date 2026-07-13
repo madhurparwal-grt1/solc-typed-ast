@@ -8,8 +8,6 @@ export class LegacyThrowProcessor extends LegacyNodeProcessor<Throw> {
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Throw> {
-        const [id, src] = super.process(reader, config, raw);
-
-        return [id, src, undefined, raw];
+        throw new Error("STUB");
     }
 }

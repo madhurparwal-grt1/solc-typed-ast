@@ -10,36 +10,7 @@ type SupportedNode = Expression | VariableDeclaration | TypeName;
 
 export class TypeIdentifierNormalizer implements ASTNodePostprocessor<SupportedNode> {
     process(node: SupportedNode): void {
-        if (typeof node.typeIdentifier === "string") {
-            return;
-        }
-
-        // In 0.6.x typeNames under ElementaryTypeNameExpressions are sometimes null. In later solidity they are undefined
-        if (
-            node instanceof TypeName &&
-            (node.typeIdentifier === null || node.typeIdentifier === undefined) &&
-            node.parent instanceof ElementaryTypeNameExpression &&
-            typeof node.parent.typeIdentifier === "string"
-        ) {
-            const parentType = parseTypeIdentifier(node.parent.typeIdentifier);
-            if (parentType instanceof TypeTypeId) {
-                node.typeIdentifier = parentType.actualT.pp();
-            }
-        }
-
-        /**
-         * `Identifier`s under `ImportDirective` nodes don't have a `typeString`. However in the edge
-         * case where they refer to `VariableDeclaration`s (i.e. imported constants) we can fill in their
-         * `typeIdentifier` trivially.
-         */
-        if (
-            node instanceof Identifier &&
-            node.parent instanceof ImportDirective &&
-            node.typeIdentifier === undefined &&
-            node.vReferencedDeclaration instanceof VariableDeclaration
-        ) {
-            node.typeIdentifier = node.vReferencedDeclaration.typeIdentifier;
-        }
+        throw new Error("STUB");
     }
 
     isSupportedNode(node: ASTNode): node is SupportedNode {

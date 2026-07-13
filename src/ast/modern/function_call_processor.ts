@@ -10,14 +10,6 @@ export class ModernFunctionCallProcessor extends ModernExpressionProcessor<Funct
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof FunctionCall> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const kind: FunctionCallKind = raw.kind;
-        const fieldNames: string[] | undefined = raw.names.length ? raw.names : undefined;
-
-        const expression = reader.convert(raw.expression, config) as Expression;
-        const args = reader.convertArray(raw.arguments, config) as Expression[];
-
-        return [id, src, typeString, typeIdentifier, kind, expression, args, fieldNames, raw];
+        throw new Error("STUB");
     }
 }

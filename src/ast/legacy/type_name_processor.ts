@@ -8,10 +8,6 @@ export class LegacyTypeNameProcessor<T extends TypeName> extends LegacyNodeProce
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<TypeNameConstructor<T>> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const typeString: string = raw.attributes.type;
-
-        return [id, src, typeString, undefined, raw];
+        throw new Error("STUB");
     }
 }

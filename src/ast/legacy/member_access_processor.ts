@@ -9,24 +9,6 @@ export class LegacyMemberAccessProcessor extends LegacyExpressionProcessor<Membe
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof MemberAccess> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const attributes = raw.attributes;
-
-        const memberName: string = attributes.member_name;
-        const referencedDeclaration: number = attributes.referencedDeclaration;
-
-        const [expression] = reader.convertArray(raw.children, config) as [Expression];
-
-        return [
-            id,
-            src,
-            typeString,
-            typeIdentifier,
-            expression,
-            memberName,
-            referencedDeclaration,
-            raw
-        ];
+        throw new Error("STUB");
     }
 }

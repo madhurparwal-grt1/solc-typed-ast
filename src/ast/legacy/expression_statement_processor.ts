@@ -9,10 +9,6 @@ export class LegacyExpressionStatementProcessor extends LegacyNodeProcessor<Expr
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ExpressionStatement> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const [expression] = reader.convertArray(raw.children, config) as [Expression];
-
-        return [id, src, expression, undefined, raw];
+        throw new Error("STUB");
     }
 }

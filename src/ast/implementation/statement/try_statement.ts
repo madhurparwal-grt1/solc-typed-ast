@@ -23,15 +23,10 @@ export class TryStatement extends Statement {
         documentation?: string | StructuredDocumentation,
         raw?: any
     ) {
-        super(id, src, documentation, raw);
-
-        this.vExternalCall = externalCall;
-        this.vClauses = clauses;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.documentation, this.vExternalCall, this.vClauses);
+        throw new Error("STUB");
     }
 }

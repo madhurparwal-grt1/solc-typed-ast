@@ -4,7 +4,7 @@ import { Expression } from "../implementation/expression/expression";
 import { VariableDeclarationStatement } from "../implementation/statement/variable_declaration_statement";
 import { ModernNodeProcessor } from "./node_processor";
 
-const declarationsFilterFn = (declaration: unknown | null) => declaration !== null;
+const declarationsFilterFn = (declaration: unknown | null) => { throw new Error("STUB"); };
 
 export class ModernVariableDeclarationStatementProcessor extends ModernNodeProcessor<VariableDeclarationStatement> {
     process(
@@ -12,20 +12,6 @@ export class ModernVariableDeclarationStatementProcessor extends ModernNodeProce
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof VariableDeclarationStatement> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const assignments: Array<number | null> = raw.assignments;
-        const documentation: string | undefined = raw.documentation;
-
-        const declarations = reader.convertArray(
-            raw.declarations.filter(declarationsFilterFn),
-            config
-        ) as VariableDeclaration[];
-
-        const initialValue = raw.initialValue
-            ? (reader.convert(raw.initialValue, config) as Expression)
-            : undefined;
-
-        return [id, src, assignments, declarations, initialValue, documentation, raw];
+        throw new Error("STUB");
     }
 }

@@ -19,14 +19,10 @@ export class ElementaryTypeNameExpression extends Expression {
         typeName: string | ElementaryTypeName,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.typeName = typeName;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.typeName);
+        throw new Error("STUB");
     }
 }

@@ -9,21 +9,6 @@ export class ModernImportDirectiveProcessor extends ModernNodeProcessor<ImportDi
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof ImportDirective> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const file: string = raw.file;
-        const absolutePath: string = raw.absolutePath;
-        const unitAlias: string = raw.unitAlias;
-        const symbolAliases: SymbolAlias[] = raw.symbolAliases;
-        const scope: number = raw.scope;
-        const sourceUnit: number = raw.sourceUnit;
-
-        for (const alias of symbolAliases) {
-            if (typeof alias.foreign !== "number") {
-                alias.foreign = reader.convert(alias.foreign, config) as Identifier;
-            }
-        }
-
-        return [id, src, file, absolutePath, unitAlias, symbolAliases, scope, sourceUnit, raw];
+        throw new Error("STUB");
     }
 }

@@ -8,11 +8,6 @@ export class LegacyEnumValueProcessor extends LegacyNodeProcessor<EnumValue> {
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof EnumValue> {
-        const [id, src] = super.process(reader, config, raw);
-        const attributes = raw.attributes;
-
-        const name: string = attributes.name;
-
-        return [id, src, name, undefined, raw];
+        throw new Error("STUB");
     }
 }

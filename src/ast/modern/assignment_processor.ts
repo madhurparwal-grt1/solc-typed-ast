@@ -9,13 +9,6 @@ export class ModernAssignmentProcessor extends ModernExpressionProcessor<Assignm
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof Assignment> {
-        const [id, src, typeString, typeIdentifier] = super.process(reader, config, raw);
-
-        const operator: string = raw.operator;
-
-        const leftHandSide = reader.convert(raw.leftHandSide, config) as Expression;
-        const rightHandSide = reader.convert(raw.rightHandSide, config) as Expression;
-
-        return [id, src, typeString, typeIdentifier, operator, leftHandSide, rightHandSide, raw];
+        throw new Error("STUB");
     }
 }

@@ -13,62 +13,6 @@ export class ModernVariableDeclarationProcessor extends ModernNodeProcessor<Vari
         config: ASTReaderConfiguration,
         raw: any
     ): ConstructorParameters<typeof VariableDeclaration> {
-        const [id, src] = super.process(reader, config, raw);
-
-        const constant: boolean = raw.constant;
-        const indexed: boolean = raw.indexed || false;
-        const name: string = raw.name;
-        const scope: number = raw.scope;
-        const stateVariable: boolean = raw.stateVariable;
-        const visibility: StateVariableVisibility = raw.visibility;
-        const typeString: string = raw.typeDescriptions.typeString;
-        const typeIdentifier: string = raw.typeDescriptions.typeIdentifier;
-        const nameLocation: string | undefined = raw.nameLocation;
-
-        const storageLocation: DataLocation =
-            raw.storageLocation === "" ? DataLocation.Default : raw.storageLocation;
-
-        let mutability: Mutability;
-
-        if (typeof raw.mutability === "string") {
-            mutability = raw.mutability;
-        } else {
-            mutability = constant ? Mutability.Constant : Mutability.Mutable;
-        }
-
-        const documentation = raw.documentation
-            ? (reader.convert(raw.documentation, config) as StructuredDocumentation)
-            : undefined;
-
-        const overrideSpecifier = raw.overrides
-            ? (reader.convert(raw.overrides, config) as OverrideSpecifier)
-            : undefined;
-
-        const typeName = raw.typeName
-            ? (reader.convert(raw.typeName, config) as TypeName)
-            : undefined;
-
-        const value = raw.value ? (reader.convert(raw.value, config) as Expression) : undefined;
-
-        return [
-            id,
-            src,
-            constant,
-            indexed,
-            name,
-            scope,
-            stateVariable,
-            storageLocation,
-            visibility,
-            mutability,
-            typeString,
-            typeIdentifier,
-            documentation,
-            typeName,
-            overrideSpecifier,
-            value,
-            nameLocation,
-            raw
-        ];
+        throw new Error("STUB");
     }
 }

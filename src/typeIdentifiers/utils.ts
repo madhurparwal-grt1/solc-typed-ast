@@ -74,7 +74,7 @@ export function changeLocationTo(t: TypeIdentifier, loc: DataLocation): TypeIden
 
     if (t instanceof TupleTypeId) {
         return new TupleTypeId(
-            t.components.map((c) => (c === null ? c : changeLocationTo(c, loc)))
+            t.components.map((c) => { throw new Error("STUB"); })
         );
     }
 
@@ -129,15 +129,12 @@ export function getterArgsAndReturn(v: VariableDeclaration): [TypeIdentifier[], 
         const def = ctx.locate(solT.toType.id) as StructDefinition;
         // Filter out top-level arrays and maps
         retTs = def.vMembers
-            .map((decl) => changeLocationTo(typeOf(decl), DataLocation.Memory))
+            .map((decl) => { throw new Error("STUB"); })
             .filter(
                 (t) =>
-                    !(
-                        (t instanceof PointerTypeId && t.toType instanceof ArrayTypeId) ||
-                        t instanceof MappingTypeId
-                    )
+                    { throw new Error("STUB"); }
             )
-            .map((t) => toABIType(t, ctx));
+            .map((t) => { throw new Error("STUB"); });
     } else {
         retTs = [toABIType(solT, ctx)];
     }
@@ -154,23 +151,7 @@ export function getterArgsAndReturn(v: VariableDeclaration): [TypeIdentifier[], 
  * @returns
  */
 export function generalize(t: TypeIdentifier): TypeIdentifier {
-    if (t instanceof PointerTypeId) {
-        return generalize(t.toType);
-    }
-
-    if (t instanceof ArrayTypeId) {
-        return new ArrayTypeId(generalize(t.elT), t.size);
-    }
-
-    if (t instanceof ArraySliceTypeId || t instanceof MappingTypeId) {
-        throw new Error(`Cannot generalize ${t.pp()}`);
-    }
-
-    if (t instanceof TupleTypeId) {
-        return new TupleTypeId(t.components.map((c) => (c === null ? c : generalize(c))));
-    }
-
-    return t;
+    throw new Error("STUB");
 }
 
 /**
@@ -182,23 +163,7 @@ export function generalize(t: TypeIdentifier): TypeIdentifier {
  * @returns
  */
 export function specialize(t: TypeIdentifier, loc: DataLocation): TypeIdentifier {
-    if (t instanceof ArraySliceTypeId || t instanceof PointerTypeId || t instanceof MappingTypeId) {
-        throw new Error(`Cannot specialize ${t.pp()}`);
-    }
-
-    if (t instanceof ArrayTypeId) {
-        return new PointerTypeId(new ArrayTypeId(specialize(t.elT, loc), t.size), loc, true);
-    }
-
-    if (t instanceof BytesTypeId || t instanceof StringTypeId) {
-        return new PointerTypeId(t, loc, true);
-    }
-
-    if (t instanceof TupleTypeId) {
-        return new TupleTypeId(t.components.map((c) => (c === null ? c : specialize(c, loc))));
-    }
-
-    return t;
+    throw new Error("STUB");
 }
 
 /**

@@ -170,7 +170,7 @@ const processors = {
 };
 
 export const LegacyConfiguration: ASTReaderConfiguration = {
-    signatureDetector: (raw: any) => raw.name,
+    signatureDetector: (raw: any) => { throw new Error("STUB"); },
 
     rules: {
         Default: {

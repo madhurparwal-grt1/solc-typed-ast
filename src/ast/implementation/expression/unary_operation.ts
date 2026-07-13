@@ -40,19 +40,11 @@ export class UnaryOperation extends Expression {
         userFunction?: number,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.prefix = prefix;
-        this.operator = operator;
-        this.userFunction = userFunction;
-
-        this.vSubExpression = subExpression;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vSubExpression);
+        throw new Error("STUB");
     }
 
     /**
@@ -61,30 +53,10 @@ export class UnaryOperation extends Expression {
      * Is `undefined` when there is no definition bound to the operator.
      */
     get vUserFunction(): FunctionDefinition | undefined {
-        if (!this.userFunction) {
-            return undefined;
-        }
-
-        const def = this.requiredContext.locate(this.userFunction);
-
-        if (def instanceof FunctionDefinition) {
-            return def;
-        }
-
-        throw new Error(
-            `Invalid function reference for operation "${this.operator}" of node ${this.type}#${this.id}`
-        );
+        throw new Error("STUB");
     }
 
     set vUserFunction(value: FunctionDefinition | undefined) {
-        if (value === undefined) {
-            this.userFunction = undefined;
-        } else {
-            if (!this.requiredContext.contains(value)) {
-                throw new Error(`Node ${value.type}#${value.id} not belongs to a current context`);
-            }
-
-            this.userFunction = value.id;
-        }
+        throw new Error("STUB");
     }
 }

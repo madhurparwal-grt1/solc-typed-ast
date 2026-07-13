@@ -36,18 +36,10 @@ export class FunctionTypeName extends TypeName {
         returnParameterTypes: ParameterList,
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.visibility = visibility;
-        this.stateMutability = stateMutability;
-
-        this.vParameterTypes = parameterTypes;
-        this.vReturnParameterTypes = returnParameterTypes;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vParameterTypes, this.vReturnParameterTypes);
+        throw new Error("STUB");
     }
 }

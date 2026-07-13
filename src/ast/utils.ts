@@ -91,23 +91,9 @@ export function* sequence(start = 0, step = 1): Generator<number, number, number
 }
 
 export function parseSourceLocation(range: string): SourceLocation {
-    const parts = range.split(":");
-
-    const offset = parseInt(parts[0], 10);
-    const length = parseInt(parts[1], 10);
-    const sourceIndex = parseInt(parts[2], 10);
-
-    return { offset, length, sourceIndex };
+    throw new Error("STUB");
 }
 
 export function detectFunctionKind(attributes: any): FunctionKind {
-    if (attributes.kind) {
-        return attributes.kind;
-    }
-
-    if (attributes.isConstructor) {
-        return FunctionKind.Constructor;
-    }
-
-    return attributes.name === "" ? FunctionKind.Fallback : FunctionKind.Function;
+    throw new Error("STUB");
 }

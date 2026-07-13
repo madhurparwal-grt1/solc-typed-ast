@@ -21,15 +21,10 @@ export class InheritanceSpecifier extends ASTNode {
         args: Expression[],
         raw?: any
     ) {
-        super(id, src, raw);
-
-        this.vBaseType = baseType;
-        this.vArguments = args;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vBaseType, this.vArguments);
+        throw new Error("STUB");
     }
 }

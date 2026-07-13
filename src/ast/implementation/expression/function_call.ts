@@ -53,54 +53,18 @@ export class FunctionCall extends Expression {
         fieldNames?: string[],
         raw?: any
     ) {
-        super(id, src, typeString, typeIdentifier, raw);
-
-        this.kind = kind;
-        this.fieldNames = fieldNames;
-
-        this.vExpression = expression;
-        this.vArguments = args;
-
-        this.acceptChildren();
+        throw new Error("STUB");
     }
 
     get children(): readonly ASTNode[] {
-        return this.pickNodes(this.vExpression, this.vArguments);
+        throw new Error("STUB");
     }
 
     /**
      * Identifier of the function name, e.g. `sha3(...)`
      */
     get vIdentifier(): string {
-        const expression = this.vCallee;
-
-        if (expression instanceof NewExpression) {
-            return "new";
-        }
-
-        if (expression instanceof ElementaryTypeNameExpression) {
-            if (typeof expression.typeName === "string") {
-                return expression.typeName;
-            }
-
-            const expressionType = expression.typeName;
-
-            if (expressionType.name === "address") {
-                return expressionType.stateMutability === "payable" ? "payable" : "address";
-            }
-
-            return expressionType.name;
-        }
-
-        if (expression instanceof MemberAccess) {
-            return (expression.vExpression as Identifier).name;
-        }
-
-        if (expression instanceof Identifier) {
-            return expression.name;
-        }
-
-        return "unknown";
+        throw new Error("STUB");
     }
 
     /**
@@ -109,49 +73,28 @@ export class FunctionCall extends Expression {
      * e.g. the `memberName` from `someUintArray.push(123)` is `push`.
      */
     get vMemberName(): string | undefined {
-        const expression = this.vCallee;
-
-        return expression instanceof MemberAccess ? expression.memberName : undefined;
+        throw new Error("STUB");
     }
 
     /**
      * Solidity builtin or user-defined function
      */
     get vFunctionCallType(): ExternalReferenceType {
-        const expression = this.vCallee;
-
-        if (expression instanceof MemberAccess && expression.vReferencedDeclaration) {
-            return ExternalReferenceType.UserDefined;
-        }
-
-        if (expression instanceof Identifier) {
-            return expression.vIdentifierType;
-        }
-
-        return ExternalReferenceType.Builtin;
+        throw new Error("STUB");
     }
 
     /**
      * Called function or event definition reference
      */
     get vReferencedDeclaration(): CallableDefinition | undefined {
-        const expression = this.vCallee;
-
-        if (expression instanceof MemberAccess || expression instanceof Identifier) {
-            return expression.vReferencedDeclaration as CallableDefinition;
-        }
-
-        return undefined;
+        throw new Error("STUB");
     }
 
     /**
      * `identifier.memberName` or if `memberName` is empty it is `identifier`
      */
     get vFunctionName(): string {
-        const memberName = this.vMemberName;
-        const identifier = this.vIdentifier;
-
-        return memberName === undefined ? identifier : memberName;
+        throw new Error("STUB");
     }
 
     /**
@@ -163,20 +106,6 @@ export class FunctionCall extends Expression {
      * and call options can be nested.
      */
     get vCallee(): Expression {
-        let expression = this.vExpression;
-
-        while (true) {
-            if (
-                expression instanceof FunctionCall &&
-                (expression.vFunctionName === "gas" || expression.vFunctionName === "value") &&
-                expression.vExpression instanceof MemberAccess
-            ) {
-                expression = expression.vExpression.vExpression;
-            } else if (expression instanceof FunctionCallOptions) {
-                expression = expression.vExpression;
-            } else {
-                return expression;
-            }
-        }
+        throw new Error("STUB");
     }
 }

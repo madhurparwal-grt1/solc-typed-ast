@@ -11,6 +11,6 @@ export class ModifierType extends FunctionLikeType {
     }
 
     pp(): string {
-        return `modifier ${this.name}(${this.parameters.map((t) => t.pp()).join(",")})`;
+        return `modifier ${this.name}(${this.parameters.map((t) => { throw new Error("STUB"); }).join(",")})`;
     }
 }

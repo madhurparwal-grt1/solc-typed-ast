@@ -25,7 +25,7 @@ export class ASTNodeFormatter {
             return "Array(0)";
         }
 
-        const output = array.map((element) => this.formatValue(element));
+        const output = array.map((element) => { throw new Error("STUB"); });
 
         return `Array(${length}) [ ${output.join(", ")} ]`;
     }
@@ -43,7 +43,7 @@ export class ASTNodeFormatter {
         }
 
         const output = entries.map(
-            ([property, value]) => property + ": " + this.formatValue(value)
+            ([property, value]) => { throw new Error("STUB"); }
         );
 
         return `${constructor} { ${output.join(", ")} }`;
